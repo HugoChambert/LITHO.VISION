@@ -57,7 +57,7 @@ nav {
 
 nav,
 nav * {
-    cursor: auto !important;
+    cursor: pointer !important; 
 }
 
 .logo {
