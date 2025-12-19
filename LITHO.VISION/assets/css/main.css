@@ -37,6 +37,7 @@ canvas {
 /* Navbar */
 nav {
     position: fixed;
+    cursor: default; 
     top: 24px;
     left: 50%;
     transform: translateX(-50%);
@@ -55,9 +56,8 @@ nav {
     transition: all 0.3s ease;
 }
 
-nav,
-nav * {
-    cursor: pointer !important; 
+nav a:hover {
+    cursor: pointer;
 }
 
 .logo {
@@ -80,6 +80,7 @@ nav * {
 }
 
 .logo span {
+    cursor: pointer;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
