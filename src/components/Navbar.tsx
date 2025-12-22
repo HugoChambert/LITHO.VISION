@@ -1,4 +1,8 @@
+import { Link, useLocation } from 'react-router-dom'
+
 export default function Navbar() {
+  const location = useLocation()
+
   const handleScheduleClick = () => {
     if (typeof window !== 'undefined' && (window as any).Cal) {
       (window as any).Cal.ns['book-a-demo']('ui', {
@@ -16,25 +20,27 @@ export default function Navbar() {
            WebkitBackdropFilter: 'blur(40px) saturate(180%)',
            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
          }}>
-      <a
-        href="/"
-        className="flex items-center gap-2.5 text-[15px] font-semibold text-white no-underline tracking-[-0.02em] transition-all duration-300 hover:-translate-y-1 hover:opacity-90 cursor-auto"
+      <Link
+        to="/"
+        className="flex items-center gap-2.5 text-[15px] font-semibold text-white no-underline tracking-[-0.02em] transition-all duration-300 hover:-translate-y-1 hover:opacity-90 cursor-pointer"
       >
         <span className="font-semibold uppercase tracking-wider leading-none" style={{ fontFamily: 'HelveticaNeueLTPro-Bd, Helvetica, Arial, sans-serif' }}>
           LITHOVISION
         </span>
-      </a>
+      </Link>
 
       <div className="flex gap-8 items-center">
-        <a
-          href="#how-it-works"
-          className="text-white/90 no-underline text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-300 hover:text-white hover:opacity-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white/80 after:transition-all after:duration-300 hover:after:w-full cursor-auto"
+        <Link
+          to="/how-it-works"
+          className={`no-underline text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-300 hover:text-white hover:opacity-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-white/80 after:transition-all after:duration-300 hover:after:w-full cursor-pointer ${
+            location.pathname === '/how-it-works' ? 'text-white after:w-full' : 'text-white/90 after:w-0'
+          }`}
         >
           How It Works
-        </a>
+        </Link>
         <a
           href="#contact"
-          className="text-white/90 no-underline text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-300 hover:text-white hover:opacity-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white/80 after:transition-all after:duration-300 hover:after:w-full cursor-auto"
+          className="text-white/90 no-underline text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-300 hover:text-white hover:opacity-100 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white/80 after:transition-all after:duration-300 hover:after:w-full cursor-pointer"
         >
           Contact Us
         </a>

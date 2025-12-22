@@ -1,16 +1,19 @@
-import HeroParallaxDemo from "@/components/hero-parallax-demo"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from "@/components/Navbar"
-import Hero from "@/components/Hero"
-import HowItWorks from "@/components/HowItWorks"
+import HomePage from "@/pages/HomePage"
+import HowItWorksPage from "@/pages/HowItWorksPage"
 
 function App() {
   return (
-    <div className="bg-black">
-      <Navbar />
-      <Hero />
-      <HowItWorks />
-      <HeroParallaxDemo />
-    </div>
+    <Router>
+      <div className="bg-black">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/how-it-works" element={<HowItWorksPage />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
