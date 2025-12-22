@@ -14,16 +14,16 @@ export default function HowItWorks() {
         </div>
 
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-32">
-          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105 group cursor-default relative overflow-hidden"
                style={{
                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
                  backdropFilter: 'blur(20px) saturate(180%)',
                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
                }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="flex items-center gap-3 mb-4 relative z-10">
-              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">1</div>
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20 group-hover:border-blue-500/50 group-hover:bg-blue-500/20 transition-all duration-500">1</div>
               <h3 className="text-lg md:text-xl font-bold text-white">Image Intake & Scene Detection</h3>
             </div>
             <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
@@ -31,16 +31,16 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105 group cursor-default relative overflow-hidden"
                style={{
                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
                  backdropFilter: 'blur(20px) saturate(180%)',
                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
                }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="flex items-center gap-3 mb-4 relative z-10">
-              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">2</div>
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20 group-hover:border-blue-500/50 group-hover:bg-blue-500/20 transition-all duration-500">2</div>
               <h3 className="text-lg md:text-xl font-bold text-white">Inventory-Based Stone Selection</h3>
             </div>
             <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
@@ -48,16 +48,16 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105 group cursor-default relative overflow-hidden"
                style={{
                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
                  backdropFilter: 'blur(20px) saturate(180%)',
                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
                }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="flex items-center gap-3 mb-4 relative z-10">
-              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">3</div>
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20 group-hover:border-blue-500/50 group-hover:bg-blue-500/20 transition-all duration-500">3</div>
               <h3 className="text-lg md:text-xl font-bold text-white">AI Surface Mapping</h3>
             </div>
             <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
@@ -65,16 +65,16 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105 group cursor-default relative overflow-hidden"
                style={{
                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
                  backdropFilter: 'blur(20px) saturate(180%)',
                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
                }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="flex items-center gap-3 mb-4 relative z-10">
-              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">4</div>
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20 group-hover:border-blue-500/50 group-hover:bg-blue-500/20 transition-all duration-500">4</div>
               <h3 className="text-lg md:text-xl font-bold text-white">Lighting & Texture Adaptation</h3>
             </div>
             <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
@@ -82,16 +82,16 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105 group cursor-default relative overflow-hidden"
                style={{
                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
                  backdropFilter: 'blur(20px) saturate(180%)',
                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
                }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="flex items-center gap-3 mb-4 relative z-10">
-              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">5</div>
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20 group-hover:border-blue-500/50 group-hover:bg-blue-500/20 transition-all duration-500">5</div>
               <h3 className="text-lg md:text-xl font-bold text-white">Real-Time Rendering</h3>
             </div>
             <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
@@ -99,16 +99,16 @@ export default function HowItWorks() {
             </p>
           </div>
 
-          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105 group cursor-default relative overflow-hidden"
                style={{
                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
                  backdropFilter: 'blur(20px) saturate(180%)',
                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
                }}>
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="flex items-center gap-3 mb-4 relative z-10">
-              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">6</div>
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20 group-hover:border-blue-500/50 group-hover:bg-blue-500/20 transition-all duration-500">6</div>
               <h3 className="text-lg md:text-xl font-bold text-white">Review, Export & Share</h3>
             </div>
             <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
@@ -140,17 +140,18 @@ export default function HowItWorks() {
           />
         </div>
 
-        <div className="text-center p-8 md:p-12 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 group cursor-default"
+        <div className="text-center p-8 md:p-12 rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group cursor-default relative overflow-hidden"
              style={{
                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
                backdropFilter: 'blur(20px) saturate(180%)',
                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
              }}>
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 transition-all duration-300 group-hover:scale-105">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 md:mb-4 transition-all duration-300 group-hover:scale-105 relative z-10">
             Ready to get started?
           </h3>
-          <p className="text-white/70 mb-6 md:mb-8 text-base md:text-lg transition-all duration-300 group-hover:text-white/90">
+          <p className="text-white/70 mb-6 md:mb-8 text-base md:text-lg transition-all duration-300 group-hover:text-white/90 relative z-10">
             Schedule a demo to see how Lithovision can transform your projects
           </p>
           <button
@@ -165,7 +166,7 @@ export default function HowItWorks() {
             data-cal-link="hugo.chambert/book-a-demo"
             data-cal-namespace="book-a-demo"
             data-cal-config='{"layout":"month_view"}'
-            className="px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium text-white transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-white/30 cursor-pointer relative overflow-hidden group/btn"
+            className="px-6 md:px-8 py-3 md:py-4 rounded-full text-base md:text-lg font-medium text-white transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/50 cursor-pointer relative overflow-hidden group/btn z-10"
             style={{
               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
               backdropFilter: 'blur(20px)',
@@ -175,7 +176,7 @@ export default function HowItWorks() {
             }}
           >
             <span className="relative z-10">Schedule Demo</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-blue-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
           </button>
         </div>
       </div>

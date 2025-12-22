@@ -29,7 +29,7 @@ export default function Navbar() {
     <nav
       ref={navRef}
       onMouseMove={handleMouseMove}
-      className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-between gap-4 md:gap-12 lg:gap-20 px-4 md:px-8 lg:px-12 py-3 md:py-4 rounded-full border border-white/10 transition-all duration-500 w-[95%] md:w-auto md:min-w-[650px] lg:min-w-[700px] max-w-[1200px] hover:border-white/30 hover:shadow-2xl hover:shadow-white/10 group overflow-hidden"
+      className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-between gap-4 md:gap-12 lg:gap-20 px-4 md:px-8 lg:px-12 py-3 md:py-4 rounded-full border border-white/10 transition-all duration-500 w-[95%] md:w-auto md:min-w-[650px] lg:min-w-[700px] max-w-[1200px] hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group overflow-hidden"
          style={{
            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02))',
            backdropFilter: 'blur(40px) saturate(180%)',
@@ -44,7 +44,7 @@ export default function Navbar() {
           left: `${mousePosition.x}px`,
           top: `${mousePosition.y}px`,
           transform: 'translate(-50%, -50%)',
-          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 40%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%)',
           filter: 'blur(20px)',
         }}
       />
@@ -60,7 +60,7 @@ export default function Navbar() {
       <div className="flex gap-3 md:gap-6 lg:gap-8 items-center">
         <Link
           to="/how-it-works"
-          className={`no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-white/80 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-white/50 cursor-pointer hidden sm:block ${
+          className={`no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer hidden sm:block ${
             location.pathname === '/how-it-works' ? 'text-white after:w-full' : 'text-white/90 after:w-0'
           }`}
         >
@@ -71,14 +71,14 @@ export default function Navbar() {
           data-cal-link="hugo.chambert/book-a-demo"
           data-cal-namespace="book-a-demo"
           data-cal-config='{"layout":"month_view"}'
-          className="text-white/90 no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-110 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white/80 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-white/50 cursor-pointer bg-transparent border-none p-0"
+          className="text-white/90 no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-110 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer bg-transparent border-none p-0"
         >
           <span className="hidden sm:inline">Schedule Demo</span>
           <span className="sm:hidden">Demo</span>
         </button>
         <a
           href="#contact"
-          className="text-white/90 no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-white/80 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-white/50 cursor-pointer hidden sm:block"
+          className="text-white/90 no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer hidden sm:block"
         >
           Contact Us
         </a>
