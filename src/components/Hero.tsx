@@ -26,18 +26,43 @@ export default function Hero() {
         }}
       />
 
-      <div className="absolute inset-0 flex items-center justify-center z-5 pointer-events-none">
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-auto">
+        <motion.div
+          className="flex text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white select-none mb-8"
+          style={{
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+          }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {'LITHOVISION'.split('').map((letter, index) => (
+            <motion.span
+              key={index}
+              className="inline-block transition-all duration-300 hover:-translate-y-4 hover:text-blue-400 cursor-pointer"
+              style={{
+                transitionDelay: `${index * 20}ms`,
+                textShadow: '0 0 40px rgba(59, 130, 246, 0.3)'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.05, ease: "easeOut" }}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </motion.div>
+
         <motion.p
-          className="text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none"
+          className="text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none pointer-events-none"
           style={{
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
             fontWeight: 300,
             letterSpacing: '0.05em',
-            marginTop: '200px',
           }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
         >
           See the stone. Sell with certainty
         </motion.p>
