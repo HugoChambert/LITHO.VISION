@@ -1,10 +1,17 @@
+import ScrollReveal from '../components/ScrollReveal';
+import AnimatedGradient from '../components/AnimatedGradient';
+
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-black">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-24">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8">
-          Privacy Policy
-        </h1>
+    <div className="min-h-screen bg-black relative overflow-hidden">
+      <AnimatedGradient />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-24 relative z-10">
+        <ScrollReveal>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8">
+            Privacy Policy
+          </h1>
+        </ScrollReveal>
 
         <div className="space-y-6 text-white/70 text-sm sm:text-base leading-relaxed">
           <p className="text-white/50 text-sm">
