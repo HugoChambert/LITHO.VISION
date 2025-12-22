@@ -60,7 +60,7 @@ export default function Navbar() {
       />
       <Link
         to="/"
-        className="flex items-center gap-2.5 text-xs md:text-sm lg:text-[15px] font-semibold text-white no-underline tracking-[-0.02em] cursor-pointer whitespace-nowrap relative z-10"
+        className="flex items-center gap-2.5 text-xs md:text-sm lg:text-[15px] font-semibold text-white no-underline tracking-[-0.02em] cursor-pointer whitespace-nowrap relative z-10 transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]"
       >
         <span className="font-semibold uppercase tracking-wider leading-none" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
           LITHOVISION
@@ -96,20 +96,17 @@ export default function Navbar() {
           </button>
 
           {showContactDropdown && (
-            <div className="absolute top-full right-0 pt-2 z-[2000]">
-              <div className="w-[320px] sm:w-[380px] rounded-2xl border border-white/10 overflow-hidden"
+            <div className="absolute top-full right-0 pt-3 z-[2000]">
+              <div className="w-[240px] rounded-xl border border-white/10 overflow-hidden"
                    style={{
                      background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9))',
                      backdropFilter: 'blur(40px)',
                      WebkitBackdropFilter: 'blur(40px)',
                      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
                    }}>
-              <div className="p-6 space-y-6">
+              <div className="p-4 space-y-3">
                 <div>
-                  <h4 className="text-base font-bold text-white mb-3">Sales Inquiries</h4>
-                  <p className="text-xs text-white/60 mb-3 leading-relaxed">
-                    Interested in bringing LithoVision to your business?
-                  </p>
+                  <h4 className="text-sm font-bold text-white mb-2">Sales</h4>
                   <button
                     onClick={() => {
                       if (typeof window !== 'undefined' && (window as any).Cal) {
@@ -123,24 +120,21 @@ export default function Navbar() {
                     data-cal-link="hugo.chambert/book-a-demo"
                     data-cal-namespace="book-a-demo"
                     data-cal-config='{"layout":"month_view"}'
-                    className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all duration-300 hover:scale-105 cursor-pointer w-full"
+                    className="px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-all duration-300 hover:scale-105 cursor-pointer w-full"
                     style={{
                       background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.1))',
                       border: '1px solid rgba(59, 130, 246, 0.3)'
                     }}
                   >
-                    Schedule a Demo
+                    Schedule Demo
                   </button>
                 </div>
 
-                <div className="border-t border-white/10 pt-4">
-                  <h4 className="text-base font-bold text-white mb-3">Support</h4>
-                  <p className="text-xs text-white/60 mb-3 leading-relaxed">
-                    Need help with your account or have technical questions?
-                  </p>
+                <div className="border-t border-white/10 pt-3">
+                  <h4 className="text-sm font-bold text-white mb-2">Support</h4>
                   <a
                     href="mailto:support@lithovision.com"
-                    className="inline-block px-4 py-2 rounded-full text-xs font-medium text-white transition-all duration-300 hover:scale-105 w-full text-center"
+                    className="inline-block px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-all duration-300 hover:scale-105 w-full text-center"
                     style={{
                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
                       border: '1px solid rgba(255, 255, 255, 0.2)'
@@ -150,16 +144,11 @@ export default function Navbar() {
                   </a>
                 </div>
 
-                <div className="border-t border-white/10 pt-4">
-                  <h4 className="text-base font-bold text-white mb-2">General Contact</h4>
-                  <div className="space-y-2 text-xs text-white/60">
-                    <p>
-                      <a href="mailto:info@lithovision.com" className="hover:text-white transition-colors">
-                        info@lithovision.com
-                      </a>
-                    </p>
-                    <p>Monday - Friday, 9:00 AM - 6:00 PM EST</p>
-                  </div>
+                <div className="border-t border-white/10 pt-3">
+                  <h4 className="text-sm font-bold text-white mb-1.5">Info</h4>
+                  <a href="mailto:info@lithovision.com" className="text-xs text-white/70 hover:text-white transition-colors block">
+                    info@lithovision.com
+                  </a>
                 </div>
               </div>
               </div>
