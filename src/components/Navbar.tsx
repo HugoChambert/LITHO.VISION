@@ -1,8 +1,8 @@
 export default function Navbar() {
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-between gap-20 px-12 py-4 rounded-full border-2 border-[#7d7d7d2b] shadow-[0_2px_20px_rgba(0,0,0,0.08)] transition-all duration-300 min-w-[700px]"
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-between gap-20 px-12 py-4 rounded-full border-2 border-white/30 shadow-[0_8px_32px_rgba(255,255,255,0.25)] transition-all duration-300 min-w-[700px]"
          style={{
-           background: '#d3d3d357',
+           background: 'rgba(255, 255, 255, 0.95)',
            backdropFilter: 'saturate(180%) blur(20px)',
            WebkitBackdropFilter: 'saturate(180%) blur(20px)'
          }}>

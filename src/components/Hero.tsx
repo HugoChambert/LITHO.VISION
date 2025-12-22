@@ -12,7 +12,6 @@ export default function Hero() {
             background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 80px rgba(255, 255, 255, 0.5)',
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -39,9 +38,9 @@ export default function Hero() {
       </motion.div>
 
       <div
-        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-96 pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.7) 70%, #000000 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 60%, #000000 100%)',
         }}
       />
     </div>
