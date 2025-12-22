@@ -36,9 +36,9 @@ export default function ImageSlider({
   };
 
   return (
-    <div className="relative group max-w-4xl mx-auto">
+    <div className="relative group max-w-4xl mx-auto px-2 sm:px-0">
       <div
-        className="relative w-full aspect-[16/10] rounded-3xl overflow-hidden cursor-ew-resize select-none border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10"
+        className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-ew-resize select-none border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10"
         style={{
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
         }}
@@ -75,7 +75,7 @@ export default function ImageSlider({
         </div>
 
 
-        <div className="absolute top-3 md:top-4 left-3 md:left-4 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium text-white transition-all duration-300 group-hover:scale-105"
+        <div className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium text-white transition-all duration-300 group-hover:scale-105"
              style={{
                background: 'rgba(0, 0, 0, 0.6)',
                backdropFilter: 'blur(10px)',
@@ -84,7 +84,7 @@ export default function ImageSlider({
           {beforeLabel}
         </div>
 
-        <div className="absolute top-3 md:top-4 right-3 md:right-4 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium text-white transition-all duration-300 group-hover:scale-105"
+        <div className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium text-white transition-all duration-300 group-hover:scale-105"
              style={{
                background: 'rgba(0, 0, 0, 0.6)',
                backdropFilter: 'blur(10px)',
@@ -94,7 +94,7 @@ export default function ImageSlider({
         </div>
       </div>
 
-      <p className="text-center text-white/60 mt-4 md:mt-6 text-xs md:text-sm transition-all duration-300 group-hover:text-white/80">
+      <p className="text-center text-white/60 mt-3 sm:mt-4 md:mt-6 text-[11px] sm:text-xs md:text-sm transition-all duration-300 group-hover:text-white/80 px-2">
         Drag the slider to compare before and after results
       </p>
     </div>
