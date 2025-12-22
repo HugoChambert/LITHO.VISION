@@ -65,7 +65,7 @@ export const HeroParallax = ({
       ref={ref}
       className="h-[300vh] pt-40 pb-0 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
       style={{
-        background: 'linear-gradient(to top, #2d2d2d 0%, #1a1a1a 40%, #000000 100%)',
+        background: '#000000',
       }}
     >
       <motion.div

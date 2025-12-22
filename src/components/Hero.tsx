@@ -1,10 +1,8 @@
 import { motion } from "motion/react";
-import InteractiveDotGrid from "./InteractiveDotGrid";
 
 export default function Hero() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      <InteractiveDotGrid />
 
       <div className="absolute inset-0 flex items-center justify-center z-10">
         <motion.h1
