@@ -54,6 +54,12 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
     springConfig
   );
+
+  const grainTranslate = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, 100]),
+    springConfig
+  );
+
   return (
     <div
       ref={ref}
@@ -62,6 +68,15 @@ export const HeroParallax = ({
         background: 'linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #ADD8E6 100%)',
       }}
     >
+      <motion.div
+        className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{
+          y: grainTranslate,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '200px 200px',
+        }}
+      />
       <Header />
       <motion.div
         style={{
@@ -107,10 +122,10 @@ export const HeroParallax = ({
 export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold text-white">
+      <h1 className="text-2xl md:text-7xl font-bold text-white drop-shadow-lg">
         The Ultimate <br /> development studio
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 text-white/90">
+      <p className="max-w-2xl text-base md:text-xl mt-8 text-white drop-shadow-md">
         We build beautiful products with the latest technologies and frameworks.
         We are a team of passionate developers and designers that love to build
         amazing products.
