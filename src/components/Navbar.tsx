@@ -52,7 +52,7 @@ export default function Navbar() {
         to="/"
         className="flex items-center gap-2.5 text-xs md:text-sm lg:text-[15px] font-semibold text-white no-underline tracking-[-0.02em] cursor-pointer whitespace-nowrap relative z-10"
       >
-        <span className="font-semibold uppercase tracking-wider leading-none" style={{ fontFamily: 'HelveticaNeueLTPro-Bd, Helvetica, Arial, sans-serif' }}>
+        <span className="font-semibold uppercase tracking-wider leading-none" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
           LITHOVISION
         </span>
       </Link>

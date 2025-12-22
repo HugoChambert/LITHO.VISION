@@ -3,11 +3,11 @@ import { motion } from "motion/react";
 export default function Hero() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <div className="absolute inset-0 flex items-center justify-center z-10">
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-4">
         <motion.h1
           className="text-[12vw] font-black tracking-tight select-none relative"
           style={{
-            fontFamily: 'HelveticaNeueLTPro-Bd, Helvetica, Arial, sans-serif',
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
             background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -19,6 +19,19 @@ export default function Hero() {
         >
           LITHOVISION
         </motion.h1>
+        <motion.p
+          className="text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none"
+          style={{
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+            fontWeight: 300,
+            letterSpacing: '0.05em',
+          }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+        >
+          See the stone. Sell with certainty
+        </motion.p>
       </div>
 
       <motion.div
