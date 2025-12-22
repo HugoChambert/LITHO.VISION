@@ -1,10 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 export default function Navbar() {
   const location = useLocation()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [showContactDropdown, setShowContactDropdown] = useState(false)
   const navRef = useRef<HTMLElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const handleScheduleClick = () => {
     if (typeof window !== 'undefined' && (window as any).Cal) {
@@ -24,6 +26,19 @@ export default function Navbar() {
       })
     }
   }
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowContactDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
     <nav
@@ -52,16 +67,8 @@ export default function Navbar() {
         to="/"
         className="flex items-center gap-2.5 text-xs md:text-sm lg:text-[15px] font-semibold text-white no-underline tracking-[-0.02em] cursor-pointer whitespace-nowrap relative z-10"
       >
-        <span className="font-semibold uppercase tracking-wider leading-none flex" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
-          {'LITHOVISION'.split('').map((letter, index) => (
-            <span
-              key={index}
-              className="inline-block transition-all duration-300 hover:-translate-y-1 hover:text-blue-400"
-              style={{ transitionDelay: `${index * 20}ms` }}
-            >
-              {letter}
-            </span>
-          ))}
+        <span className="font-semibold uppercase tracking-wider leading-none" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+          LITHOVISION
         </span>
       </Link>
 
@@ -85,15 +92,84 @@ export default function Navbar() {
           <span className="hidden sm:inline">Schedule Demo</span>
           <span className="sm:hidden">Demo</span>
         </button>
-        <Link
-          to="/contact"
-          className={`no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer ${
-            location.pathname === '/contact' ? 'text-white after:w-full' : 'text-white/90 after:w-0'
-          }`}
-        >
-          <span className="hidden sm:inline">Contact Us</span>
-          <span className="sm:hidden">Contact</span>
-        </Link>
+        <div className="relative" ref={dropdownRef}>
+          <button
+            onClick={() => setShowContactDropdown(!showContactDropdown)}
+            className="text-white/90 no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer bg-transparent border-none p-0"
+          >
+            <span className="hidden sm:inline">Contact Us</span>
+            <span className="sm:hidden">Contact</span>
+          </button>
+
+          {showContactDropdown && (
+            <div className="absolute top-full right-0 mt-4 w-[320px] sm:w-[380px] rounded-2xl border border-white/10 overflow-hidden z-[2000]"
+                 style={{
+                   background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9))',
+                   backdropFilter: 'blur(40px)',
+                   WebkitBackdropFilter: 'blur(40px)',
+                   boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                 }}>
+              <div className="p-6 space-y-6">
+                <div>
+                  <h4 className="text-base font-bold text-white mb-3">Sales Inquiries</h4>
+                  <p className="text-xs text-white/60 mb-3 leading-relaxed">
+                    Interested in bringing LithoVision to your business?
+                  </p>
+                  <button
+                    onClick={() => {
+                      if (typeof window !== 'undefined' && (window as any).Cal) {
+                        (window as any).Cal.ns['book-a-demo']('ui', {
+                          hideEventTypeDetails: false,
+                          layout: 'month_view'
+                        });
+                      }
+                      setShowContactDropdown(false)
+                    }}
+                    data-cal-link="hugo.chambert/book-a-demo"
+                    data-cal-namespace="book-a-demo"
+                    data-cal-config='{"layout":"month_view"}'
+                    className="px-4 py-2 rounded-full text-xs font-medium text-white transition-all duration-300 hover:scale-105 cursor-pointer w-full"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.1))',
+                      border: '1px solid rgba(59, 130, 246, 0.3)'
+                    }}
+                  >
+                    Schedule a Demo
+                  </button>
+                </div>
+
+                <div className="border-t border-white/10 pt-4">
+                  <h4 className="text-base font-bold text-white mb-3">Support</h4>
+                  <p className="text-xs text-white/60 mb-3 leading-relaxed">
+                    Need help with your account or have technical questions?
+                  </p>
+                  <a
+                    href="mailto:support@lithovision.com"
+                    className="inline-block px-4 py-2 rounded-full text-xs font-medium text-white transition-all duration-300 hover:scale-105 w-full text-center"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
+                      border: '1px solid rgba(255, 255, 255, 0.2)'
+                    }}
+                  >
+                    Email Support
+                  </a>
+                </div>
+
+                <div className="border-t border-white/10 pt-4">
+                  <h4 className="text-base font-bold text-white mb-2">General Contact</h4>
+                  <div className="space-y-2 text-xs text-white/60">
+                    <p>
+                      <a href="mailto:info@lithovision.com" className="hover:text-white transition-colors">
+                        info@lithovision.com
+                      </a>
+                    </p>
+                    <p>Monday - Friday, 9:00 AM - 6:00 PM EST</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

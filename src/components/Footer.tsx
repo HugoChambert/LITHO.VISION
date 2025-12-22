@@ -21,7 +21,7 @@ export default function Footer() {
             <h4 className="text-sm sm:text-base font-semibold text-white mb-3 sm:mb-4">Product</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/how-it-works" className="text-xs sm:text-sm text-white/60 hover:text-white transition-colors duration-300">
+                <Link to="/how-it-works" className="text-xs sm:text-sm text-white/60 hover:text-white relative pb-1 inline-block transition-all duration-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50">
                   How It Works
                 </Link>
               </li>
@@ -38,7 +38,7 @@ export default function Footer() {
                   data-cal-link="hugo.chambert/book-a-demo"
                   data-cal-namespace="book-a-demo"
                   data-cal-config='{"layout":"month_view"}'
-                  className="text-xs sm:text-sm text-white/60 hover:text-white transition-colors duration-300 text-left"
+                  className="text-xs sm:text-sm text-white/60 hover:text-white relative pb-1 transition-all duration-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 text-left bg-transparent border-none p-0 cursor-pointer"
                 >
                   Request Demo
                 </button>
@@ -50,12 +50,12 @@ export default function Footer() {
             <h4 className="text-sm sm:text-base font-semibold text-white mb-3 sm:mb-4">Company</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-xs sm:text-sm text-white/60 hover:text-white transition-colors duration-300">
+                <Link to="/about" className="text-xs sm:text-sm text-white/60 hover:text-white relative pb-1 inline-block transition-all duration-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-xs sm:text-sm text-white/60 hover:text-white transition-colors duration-300">
+                <Link to="/contact" className="text-xs sm:text-sm text-white/60 hover:text-white relative pb-1 inline-block transition-all duration-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50">
                   Contact
                 </Link>
               </li>
@@ -66,12 +66,12 @@ export default function Footer() {
             <h4 className="text-sm sm:text-base font-semibold text-white mb-3 sm:mb-4">Legal</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/privacy" className="text-xs sm:text-sm text-white/60 hover:text-white transition-colors duration-300">
+                <Link to="/privacy" className="text-xs sm:text-sm text-white/60 hover:text-white relative pb-1 inline-block transition-all duration-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-xs sm:text-sm text-white/60 hover:text-white transition-colors duration-300">
+                <Link to="/terms" className="text-xs sm:text-sm text-white/60 hover:text-white relative pb-1 inline-block transition-all duration-500 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50">
                   Terms of Service
                 </Link>
               </li>
