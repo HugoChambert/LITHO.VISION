@@ -74,17 +74,6 @@ export default function ImageSlider({
           />
         </div>
 
-        <div
-          className="absolute top-0 bottom-0 w-0.5 md:w-1 bg-white shadow-lg transition-all duration-300 group-hover:w-1 group-hover:shadow-xl group-hover:shadow-white/50"
-          style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
-        >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white shadow-xl flex items-center justify-center touch-none transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-white/50">
-            <div className="flex gap-0.5 md:gap-1">
-              <div className="w-0.5 h-3 md:h-4 bg-gray-600 transition-all duration-300 group-hover:bg-gray-800"></div>
-              <div className="w-0.5 h-3 md:h-4 bg-gray-600 transition-all duration-300 group-hover:bg-gray-800"></div>
-            </div>
-          </div>
-        </div>
 
         <div className="absolute top-3 md:top-4 left-3 md:left-4 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium text-white transition-all duration-300 group-hover:scale-105"
              style={{
