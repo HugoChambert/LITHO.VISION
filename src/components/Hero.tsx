@@ -101,7 +101,7 @@ export default function Hero() {
       />
 
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
         animate={{
           y: [0, 10, 0],
         }}
@@ -115,6 +115,13 @@ export default function Hero() {
           SCROLL TO EXPLORE
         </div>
       </motion.div>
+
+      <div
+        className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.7) 70%, #000000 100%)',
+        }}
+      />
     </div>
   );
 }
