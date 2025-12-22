@@ -3,6 +3,10 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import HomePage from "@/pages/HomePage"
 import HowItWorksPage from "@/pages/HowItWorksPage"
+import AboutPage from "@/pages/AboutPage"
+import ContactPage from "@/pages/ContactPage"
+import PrivacyPage from "@/pages/PrivacyPage"
+import TermsPage from "@/pages/TermsPage"
 
 function App() {
   return (
@@ -13,6 +17,10 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
           </Routes>
         </div>
         <Footer />
