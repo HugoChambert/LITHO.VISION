@@ -21,6 +21,11 @@ export default function NoiseOverlay() {
     let animationId: number;
 
     const noise = () => {
+      if (canvas.width === 0 || canvas.height === 0) {
+        animationId = requestAnimationFrame(noise);
+        return;
+      }
+
       const imageData = ctx.createImageData(canvas.width, canvas.height);
       const buffer = new Uint32Array(imageData.data.buffer);
 
