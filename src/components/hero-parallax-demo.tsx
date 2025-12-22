@@ -6,96 +6,78 @@ export default function HeroParallaxDemo() {
 }
 export const products = [
   {
-    title: "Moonbeam",
-    link: "https://gomoonbeam.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
+    title: "Granite Kitchen Countertop",
+    link: "#",
+    thumbnail: "/assets/img/1.jpg",
   },
   {
-    title: "Cursor",
-    link: "https://cursor.so",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/cursor.png",
+    title: "Marble Bathroom Vanity",
+    link: "#",
+    thumbnail: "/assets/img/2.jpg",
   },
   {
-    title: "Rogue",
-    link: "https://userogue.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
-  },
-
-  {
-    title: "Editorially",
-    link: "https://editorially.org",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/editorially.png",
+    title: "Quartz Island Design",
+    link: "#",
+    thumbnail: "/assets/img/3.jpg",
   },
   {
-    title: "Editrix AI",
-    link: "https://editrix.ai",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/editrix.png",
+    title: "Stone Fireplace Surround",
+    link: "#",
+    thumbnail: "/assets/img/4.JPG",
   },
   {
-    title: "Pixel Perfect",
-    link: "https://app.pixelperfect.quest",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
-  },
-
-  {
-    title: "Algochurn",
-    link: "https://algochurn.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
+    title: "Luxury Stone Backsplash",
+    link: "#",
+    thumbnail: "/assets/img/6.PNG",
   },
   {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+    title: "Outdoor Stone Patio",
+    link: "#",
+    thumbnail: "/assets/img/7.JPG",
   },
   {
-    title: "Tailwind Master Kit",
-    link: "https://tailwindmasterkit.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+    title: "Custom Edge Profiles",
+    link: "#",
+    thumbnail: "/assets/img/8.PNG",
   },
   {
-    title: "SmartBridge",
-    link: "https://smartbridgetech.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
+    title: "Premium Slab Selection",
+    link: "#",
+    thumbnail: "/assets/img/9.jpg",
   },
   {
-    title: "Renderwork Studio",
-    link: "https://renderwork.studio",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
-  },
-
-  {
-    title: "Creme Digital",
-    link: "https://cremedigital.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
+    title: "Modern Kitchen Design",
+    link: "#",
+    thumbnail: "/assets/img/10.PNG",
   },
   {
-    title: "Golden Bells Academy",
-    link: "https://goldenbellsacademy.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
+    title: "Stone Waterfall Edge",
+    link: "#",
+    thumbnail: "/assets/img/1.jpg",
   },
   {
-    title: "Invoker Labs",
-    link: "https://invoker.lol",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/invoker.png",
+    title: "Elegant Marble Bath",
+    link: "#",
+    thumbnail: "/assets/img/2.jpg",
   },
   {
-    title: "E Free Invoice",
-    link: "https://efreeinvoice.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
+    title: "Contemporary Stone Work",
+    link: "#",
+    thumbnail: "/assets/img/3.JPG",
+  },
+  {
+    title: "Natural Stone Beauty",
+    link: "#",
+    thumbnail: "/assets/img/4.JPG",
+  },
+  {
+    title: "Premium Installation",
+    link: "#",
+    thumbnail: "/assets/img/6.PNG",
+  },
+  {
+    title: "Crafted Excellence",
+    link: "#",
+    thumbnail: "/assets/img/7.JPG",
   },
 ];
