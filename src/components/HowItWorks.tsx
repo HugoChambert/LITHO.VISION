@@ -4,107 +4,140 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="min-h-screen py-20 md:py-32 px-4 md:px-8 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-20">
+        <div className="text-center mb-16 md:mb-24">
           <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tight">
             How It Works
           </h2>
-          <p className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed px-4">
-            Transform your vision into reality with our advanced lithography process
+          <p className="text-lg md:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto leading-relaxed px-4">
+            Our AI-powered visualization system transforms your project spaces with photorealistic stone renderings in seconds
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mb-16 md:mb-24">
-          <div className="space-y-6 md:space-y-8">
-            <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
-                 style={{
-                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
-                   backdropFilter: 'blur(20px) saturate(180%)',
-                   WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
-                 }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="text-3xl md:text-4xl mb-3 md:mb-4 transition-transform duration-500 group-hover:scale-110 relative z-10">📐</div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 md:mb-4 relative z-10">Design Analysis</h3>
-              <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
-                We begin by analyzing your design requirements and specifications to ensure optimal results for your lithography project.
-              </p>
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 md:gap-8 mb-20 md:mb-32">
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
+                 backdropFilter: 'blur(20px) saturate(180%)',
+                 WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+               }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="flex items-center gap-3 mb-4 relative z-10">
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">1</div>
+              <h3 className="text-lg md:text-xl font-bold text-white">Image Intake & Scene Detection</h3>
             </div>
-
-            <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
-                 style={{
-                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
-                   backdropFilter: 'blur(20px) saturate(180%)',
-                   WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
-                 }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="text-3xl md:text-4xl mb-3 md:mb-4 transition-transform duration-500 group-hover:scale-110 relative z-10">⚡</div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 md:mb-4 relative z-10">Precision Processing</h3>
-              <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
-                Our state-of-the-art lithography systems deliver nanometer-level precision for even the most complex patterns.
-              </p>
-            </div>
-
-            <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
-                 style={{
-                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
-                   backdropFilter: 'blur(20px) saturate(180%)',
-                   WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
-                 }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="text-3xl md:text-4xl mb-3 md:mb-4 transition-transform duration-500 group-hover:scale-110 relative z-10">✨</div>
-              <h3 className="text-xl md:text-2xl font-semibold text-white mb-3 md:mb-4 relative z-10">Quality Assurance</h3>
-              <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
-                Every project undergoes rigorous quality checks to ensure it meets our exacting standards and your expectations.
-              </p>
-            </div>
+            <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
+              Users upload a photo of a kitchen, bathroom, or project space. LithoVision's computer vision models automatically detect countertops, edges, backsplashes, and surrounding geometry.
+            </p>
           </div>
 
-          <div>
-            <ImageSlider
-              beforeImage="/assets/img/3.jpg"
-              afterImage="/assets/img/1.jpg"
-              zoomAfter={true}
-            />
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
+                 backdropFilter: 'blur(20px) saturate(180%)',
+                 WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+               }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="flex items-center gap-3 mb-4 relative z-10">
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">2</div>
+              <h3 className="text-lg md:text-xl font-bold text-white">Inventory-Based Stone Selection</h3>
+            </div>
+            <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
+              Stone options are selected directly from your actual slab inventory. Each slab image is processed to preserve true veining direction, scale, and color accuracy.
+            </p>
+          </div>
+
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
+                 backdropFilter: 'blur(20px) saturate(180%)',
+                 WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+               }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="flex items-center gap-3 mb-4 relative z-10">
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">3</div>
+              <h3 className="text-lg md:text-xl font-bold text-white">AI Surface Mapping</h3>
+            </div>
+            <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
+              Our AI maps the selected slab onto the detected surfaces using perspective correction and depth estimation to ensure realistic alignment, proportions, and edge continuity.
+            </p>
+          </div>
+
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
+                 backdropFilter: 'blur(20px) saturate(180%)',
+                 WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+               }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="flex items-center gap-3 mb-4 relative z-10">
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">4</div>
+              <h3 className="text-lg md:text-xl font-bold text-white">Lighting & Texture Adaptation</h3>
+            </div>
+            <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
+              The system analyzes ambient lighting, reflections, and shadows in the photo and adjusts the stone's appearance to match the real environment—avoiding flat or artificial renders.
+            </p>
+          </div>
+
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
+                 backdropFilter: 'blur(20px) saturate(180%)',
+                 WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+               }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="flex items-center gap-3 mb-4 relative z-10">
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">5</div>
+              <h3 className="text-lg md:text-xl font-bold text-white">Real-Time Rendering</h3>
+            </div>
+            <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
+              Visualizations are generated in seconds, allowing instant comparisons between slabs, layouts, and orientations without re-uploading images.
+            </p>
+          </div>
+
+          <div className="p-6 md:p-8 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 hover:scale-105 group cursor-default relative overflow-hidden"
+               style={{
+                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
+                 backdropFilter: 'blur(20px) saturate(180%)',
+                 WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
+               }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="flex items-center gap-3 mb-4 relative z-10">
+              <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-lg font-bold text-white border border-white/20">6</div>
+              <h3 className="text-lg md:text-xl font-bold text-white">Review, Export & Share</h3>
+            </div>
+            <p className="text-sm md:text-base text-white/70 leading-relaxed transition-all duration-300 group-hover:text-white/90 relative z-10">
+              Final visuals can be reviewed live with clients, exported for proposals, or shared digitally—helping teams move from selection to approval faster.
+            </p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mb-16 md:mb-24">
-          <div>
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 tracking-tight">
-              Precision Results
+        <div className="mb-20 md:mb-32">
+          <div className="text-center mb-12 md:mb-16">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+              See the Transformation
             </h3>
-            <p className="text-base md:text-lg text-white/70 leading-relaxed mb-8">
-              Experience the difference our advanced lithography technology makes. Every detail is captured with unmatched precision and clarity.
+            <p className="text-base md:text-lg text-white/70 max-w-3xl mx-auto leading-relaxed">
+              Experience the power of AI-driven visualization with real before and after examples
             </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-4 group cursor-default">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-all duration-500 group-hover:bg-white/10 group-hover:scale-110 group-hover:border-white/30">
-                  <span className="text-xl">🎯</span>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-1 transition-all duration-300 group-hover:text-white">Nanometer Accuracy</h4>
-                  <p className="text-sm text-white/60 transition-all duration-300 group-hover:text-white/80">Precision down to the nanometer level</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 group cursor-default">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 transition-all duration-500 group-hover:bg-white/10 group-hover:scale-110 group-hover:border-white/30">
-                  <span className="text-xl">⚡</span>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-1 transition-all duration-300 group-hover:text-white">Lightning Fast</h4>
-                  <p className="text-sm text-white/60 transition-all duration-300 group-hover:text-white/80">Rapid processing without compromising quality</p>
-                </div>
-              </div>
-            </div>
           </div>
-          <div>
-            <ImageSlider
-              beforeImage="/assets/img/4.JPG"
-              afterImage="/assets/img/6.PNG"
-            />
-          </div>
+          <ImageSlider
+            beforeImage="/assets/img/3.jpg"
+            afterImage="/assets/img/1.jpg"
+            zoomAfter={true}
+          />
+        </div>
+
+        <div className="mb-16 md:mb-24">
+          <ImageSlider
+            beforeImage="/assets/img/4.JPG"
+            afterImage="/assets/img/6.PNG"
+          />
         </div>
 
         <div className="text-center p-8 md:p-12 rounded-3xl border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/5 group cursor-default"

@@ -16,16 +16,15 @@ export default function ImageSlider({
   zoomAfter = false
 }: ImageSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-    if (!isDragging && e.type !== 'click') return;
-
     const container = e.currentTarget;
     const rect = container.getBoundingClientRect();
     let clientX: number;
 
     if ('touches' in e) {
+      if (e.touches.length === 0) return;
       clientX = e.touches[0].clientX;
     } else {
       clientX = e.clientX;
@@ -43,13 +42,19 @@ export default function ImageSlider({
         style={{
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
         }}
-        onMouseMove={handleMove}
-        onMouseDown={() => setIsDragging(true)}
-        onMouseUp={() => setIsDragging(false)}
-        onMouseLeave={() => setIsDragging(false)}
+        onMouseMove={(e) => {
+          if (isInteracting) handleMove(e);
+        }}
+        onMouseEnter={() => setIsInteracting(true)}
+        onMouseDown={() => setIsInteracting(true)}
+        onMouseUp={() => setIsInteracting(false)}
+        onMouseLeave={() => setIsInteracting(false)}
         onTouchMove={handleMove}
-        onTouchStart={() => setIsDragging(true)}
-        onTouchEnd={() => setIsDragging(false)}
+        onTouchStart={(e) => {
+          setIsInteracting(true);
+          handleMove(e);
+        }}
+        onTouchEnd={() => setIsInteracting(false)}
         onClick={handleMove}
       >
         <img
