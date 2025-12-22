@@ -1,9 +1,15 @@
 import { motion, useMotionValue, useSpring, animate } from "motion/react";
 import { useEffect, useState, useRef } from "react";
 
+type LetterPosition = {
+  x: number;
+  y: number;
+};
+
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+  const letterPositionsRef = useRef<LetterPosition[]>([]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -53,7 +59,9 @@ export default function Hero() {
             key={index}
             letter={letter}
             index={index}
+            totalLetters={letters.length}
             mousePosition={mousePosition}
+            letterPositionsRef={letterPositionsRef}
           />
         ))}
       </div>
@@ -104,18 +112,22 @@ export default function Hero() {
 function FloatingLetter({
   letter,
   index,
+  totalLetters,
   mousePosition,
+  letterPositionsRef,
 }: {
   letter: string;
   index: number;
+  totalLetters: number;
   mousePosition: { x: number; y: number };
+  letterPositionsRef: React.MutableRefObject<LetterPosition[]>;
 }) {
   const baseX = useMotionValue(0);
   const baseY = useMotionValue(0);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const springConfig = { damping: 15, stiffness: 100 };
+  const springConfig = { damping: 20, stiffness: 120 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
@@ -141,23 +153,22 @@ function FloatingLetter({
 
   useEffect(() => {
     const centerX = containerSize.width / 2;
-    const centerY = containerSize.height / 2;
-    const radius = 250;
-    const angleStep = (Math.PI * 2) / 11;
-    const angle = angleStep * index;
+    const centerY = containerSize.height / 2.5;
+    const letterSpacing = containerSize.width < 768 ? 50 : 80;
+    const totalWidth = (totalLetters - 1) * letterSpacing;
 
-    const startX = centerX + Math.cos(angle) * radius - 50;
-    const startY = centerY + Math.sin(angle) * radius - 50;
+    const startX = centerX - totalWidth / 2 + index * letterSpacing;
+    const startY = centerY;
 
     baseX.set(startX);
     baseY.set(startY);
     x.set(startX);
     y.set(startY);
 
-    const randomX1 = startX + (Math.random() - 0.5) * 200;
-    const randomY1 = startY + (Math.random() - 0.5) * 200;
-    const randomX2 = startX + (Math.random() - 0.5) * 200;
-    const randomY2 = startY + (Math.random() - 0.5) * 200;
+    const randomX1 = startX + (Math.random() - 0.5) * 100;
+    const randomY1 = startY + (Math.random() - 0.5) * 100;
+    const randomX2 = startX + (Math.random() - 0.5) * 100;
+    const randomY2 = startY + (Math.random() - 0.5) * 100;
 
     const duration = 8000 + Math.random() * 4000;
 
@@ -179,12 +190,15 @@ function FloatingLetter({
 
     animateFloat();
     animateFloatY();
-  }, [index, baseX, baseY, containerSize]);
+  }, [index, totalLetters, baseX, baseY, containerSize]);
 
   useEffect(() => {
     const updatePosition = () => {
       const currentBaseX = baseX.get();
       const currentBaseY = baseY.get();
+
+      let offsetX = 0;
+      let offsetY = 0;
 
       const distance = Math.sqrt(
         Math.pow(mousePosition.x - currentBaseX, 2) +
@@ -199,20 +213,38 @@ function FloatingLetter({
         const deltaY = currentBaseY - mousePosition.y;
         const angle = Math.atan2(deltaY, deltaX);
 
-        const offsetX = Math.cos(angle) * repelStrength * 150;
-        const offsetY = Math.sin(angle) * repelStrength * 150;
-
-        x.set(currentBaseX + offsetX);
-        y.set(currentBaseY + offsetY);
-      } else {
-        x.set(currentBaseX);
-        y.set(currentBaseY);
+        offsetX += Math.cos(angle) * repelStrength * 150;
+        offsetY += Math.sin(angle) * repelStrength * 150;
       }
+
+      letterPositionsRef.current.forEach((otherPos, otherIndex) => {
+        if (otherIndex === index) return;
+
+        const dx = currentBaseX + offsetX - otherPos.x;
+        const dy = currentBaseY + offsetY - otherPos.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const minDistance = 120;
+
+        if (dist < minDistance && dist > 0) {
+          const pushStrength = (minDistance - dist) / minDistance;
+          const angle = Math.atan2(dy, dx);
+          offsetX += Math.cos(angle) * pushStrength * 60;
+          offsetY += Math.sin(angle) * pushStrength * 60;
+        }
+      });
+
+      const finalX = currentBaseX + offsetX;
+      const finalY = currentBaseY + offsetY;
+
+      x.set(finalX);
+      y.set(finalY);
+
+      letterPositionsRef.current[index] = { x: finalX, y: finalY };
     };
 
     const interval = setInterval(updatePosition, 16);
     return () => clearInterval(interval);
-  }, [mousePosition, baseX, baseY, x, y]);
+  }, [mousePosition, baseX, baseY, x, y, index, letterPositionsRef]);
 
   return (
     <motion.span
