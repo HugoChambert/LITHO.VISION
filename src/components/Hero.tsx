@@ -251,10 +251,10 @@ function FloatingLetter({
       className="absolute text-8xl md:text-9xl font-black select-none"
       style={{
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)',
+        background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
-        textShadow: '0 0 80px rgba(59, 130, 246, 0.5)',
+        textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
         x: springX,
         y: springY,
       }}
