@@ -65,16 +65,16 @@ export const HeroParallax = ({
       ref={ref}
       className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
       style={{
-        background: 'linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #ADD8E6 100%)',
+        background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #000000 100%)',
       }}
     >
       <motion.div
-        className="absolute inset-0 opacity-30 pointer-events-none"
+        className="absolute inset-0 opacity-50 pointer-events-none mix-blend-overlay"
         style={{
           y: grainTranslate,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
           backgroundRepeat: 'repeat',
-          backgroundSize: '200px 200px',
+          backgroundSize: '180px 180px',
         }}
       />
       <Header />
