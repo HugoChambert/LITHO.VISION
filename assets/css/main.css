@@ -36,7 +36,7 @@ canvas {
 
 /* Spline Viewer Container */
 .iframe-container {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100vw;
@@ -611,4 +611,5 @@ nav * {
     canvas {
         display: none !important;
     }
+
 }
