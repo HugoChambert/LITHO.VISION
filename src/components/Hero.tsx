@@ -22,7 +22,7 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-10"
         animate={{
           y: [0, 10, 0],
         }}
@@ -32,7 +32,7 @@ export default function Hero() {
           ease: "easeInOut",
         }}
       >
-        <div className="text-white text-sm tracking-widest opacity-70">
+        <div className="text-white text-xs md:text-sm tracking-widest opacity-70">
           SCROLL TO EXPLORE
         </div>
       </motion.div>
