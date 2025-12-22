@@ -142,15 +142,15 @@ export default function HowItWorks() {
 
         <div className="mb-16 md:mb-24">
           <ImageSlider
-            beforeImage="/assets/img/7.JPG"
-            afterImage="/assets/img/8.PNG"
+            beforeImage="/assets/img/8.PNG"
+            afterImage="/assets/img/7.JPG"
           />
         </div>
 
         <div className="mb-16 md:mb-24">
           <ImageSlider
-            beforeImage="/assets/img/9.jpg"
-            afterImage="/assets/img/10.PNG"
+            beforeImage="/assets/img/10.PNG"
+            afterImage="/assets/img/9.jpg"
           />
         </div>
 
