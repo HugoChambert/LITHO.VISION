@@ -18,81 +18,68 @@ export default function Hero() {
     <div
       ref={heroRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full h-screen overflow-hidden"
-      style={{
-        background: 'linear-gradient(180deg, #0a0a0f 0%, #000814 100%)',
-      }}
+      className="relative w-full h-screen overflow-hidden bg-black"
     >
-      <div className="absolute inset-0" style={{ backdropFilter: 'blur(100px)' }}>
-        <motion.div
-          className="absolute rounded-full opacity-30"
-          style={{
-            width: '600px',
-            height: '600px',
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(37, 99, 235, 0.2) 40%, transparent 70%)',
-            filter: 'blur(80px)',
-          }}
-          animate={{
-            left: `${mousePosition.x}%`,
-            top: `${mousePosition.y}%`,
-            x: '-50%',
-            y: '-50%',
-          }}
-          transition={{
-            type: "spring",
-            damping: 30,
-            stiffness: 100,
-          }}
-        />
-
-        <motion.div
-          className="absolute rounded-full opacity-25"
-          style={{
-            width: '500px',
-            height: '500px',
-            background: 'radial-gradient(circle, rgba(96, 165, 250, 0.35) 0%, rgba(59, 130, 246, 0.15) 40%, transparent 70%)',
-            filter: 'blur(70px)',
-          }}
-          animate={{
-            left: `${100 - mousePosition.x}%`,
-            top: `${mousePosition.y}%`,
-            x: '-50%',
-            y: '-50%',
-          }}
-          transition={{
-            type: "spring",
-            damping: 25,
-            stiffness: 80,
-          }}
-        />
-
-        <motion.div
-          className="absolute rounded-full opacity-20"
-          style={{
-            width: '450px',
-            height: '450px',
-            background: 'radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, rgba(96, 165, 250, 0.15) 40%, transparent 70%)',
-            filter: 'blur(60px)',
-          }}
-          animate={{
-            left: `${mousePosition.x}%`,
-            top: `${100 - mousePosition.y}%`,
-            x: '-50%',
-            y: '-50%',
-          }}
-          transition={{
-            type: "spring",
-            damping: 20,
-            stiffness: 70,
-          }}
-        />
-      </div>
-
-      <div
-        className="absolute inset-0"
+      <motion.div
+        className="absolute rounded-full z-0"
         style={{
-          background: 'rgba(0, 0, 0, 0.3)',
-          backdropFilter: 'blur(2px)',
+          width: '800px',
+          height: '800px',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0.5) 30%, rgba(29, 78, 216, 0.3) 50%, transparent 70%)',
+          filter: 'blur(120px)',
+        }}
+        animate={{
+          left: `${mousePosition.x}%`,
+          top: `${mousePosition.y}%`,
+          x: '-50%',
+          y: '-50%',
+        }}
+        transition={{
+          type: "spring",
+          damping: 30,
+          stiffness: 100,
+        }}
+      />
+
+      <motion.div
+        className="absolute rounded-full z-0"
+        style={{
+          width: '700px',
+          height: '700px',
+          background: 'radial-gradient(circle, rgba(96, 165, 250, 0.7) 0%, rgba(59, 130, 246, 0.4) 30%, rgba(37, 99, 235, 0.2) 50%, transparent 70%)',
+          filter: 'blur(100px)',
+        }}
+        animate={{
+          left: `${100 - mousePosition.x}%`,
+          top: `${mousePosition.y}%`,
+          x: '-50%',
+          y: '-50%',
+        }}
+        transition={{
+          type: "spring",
+          damping: 25,
+          stiffness: 80,
+        }}
+      />
+
+      <motion.div
+        className="absolute rounded-full z-0"
+        style={{
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(147, 197, 253, 0.6) 0%, rgba(96, 165, 250, 0.4) 30%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)',
+          filter: 'blur(90px)',
+        }}
+        animate={{
+          left: `${mousePosition.x}%`,
+          top: `${100 - mousePosition.y}%`,
+          x: '-50%',
+          y: '-50%',
+        }}
+        transition={{
+          type: "spring",
+          damping: 20,
+          stiffness: 70,
         }}
       />
 
@@ -104,6 +91,7 @@ export default function Hero() {
             background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
           }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -130,9 +118,9 @@ export default function Hero() {
       </motion.div>
 
       <div
-        className="absolute bottom-0 left-0 right-0 h-96 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-96 pointer-events-none z-5"
         style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 60%, #000000 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 60%, #000000 100%)',
         }}
       />
     </div>
