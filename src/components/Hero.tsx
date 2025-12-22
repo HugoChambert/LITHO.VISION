@@ -1,8 +1,29 @@
-import { motion } from "motion/react";
+import { motion, useMotionValue, useSpring } from "motion/react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Hero() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        setMousePosition({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        });
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  const letters = "LITHOVISION".split("");
+
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div ref={containerRef} className="relative w-full h-screen overflow-hidden">
       <svg className="absolute inset-0 w-full h-full opacity-0">
         <filter id="noiseFilter">
           <feTurbulence
@@ -27,21 +48,16 @@ export default function Hero() {
       />
 
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-4">
-        <motion.h1
-          className="text-[12vw] font-black tracking-tight select-none relative"
-          style={{
-            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-            background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          LITHOVISION
-        </motion.h1>
+        <div className="relative flex items-center justify-center">
+          {letters.map((letter, index) => (
+            <FloatingLetter
+              key={index}
+              letter={letter}
+              index={index}
+              mousePosition={mousePosition}
+            />
+          ))}
+        </div>
         <motion.p
           className="text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none"
           style={{
@@ -80,5 +96,90 @@ export default function Hero() {
         }}
       />
     </div>
+  );
+}
+
+function FloatingLetter({
+  letter,
+  index,
+  mousePosition,
+}: {
+  letter: string;
+  index: number;
+  mousePosition: { x: number; y: number };
+}) {
+  const letterRef = useRef<HTMLSpanElement>(null);
+  const [letterPosition, setLetterPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (letterRef.current) {
+      const rect = letterRef.current.getBoundingClientRect();
+      const parentRect = letterRef.current.offsetParent?.getBoundingClientRect();
+      if (parentRect) {
+        setLetterPosition({
+          x: rect.left - parentRect.left + rect.width / 2,
+          y: rect.top - parentRect.top + rect.height / 2,
+        });
+      }
+    }
+  }, []);
+
+  const distance = Math.sqrt(
+    Math.pow(mousePosition.x - letterPosition.x, 2) +
+    Math.pow(mousePosition.y - letterPosition.y, 2)
+  );
+
+  const maxDistance = 200;
+  const repelStrength = Math.max(0, (maxDistance - distance) / maxDistance);
+
+  const deltaX = letterPosition.x - mousePosition.x;
+  const deltaY = letterPosition.y - mousePosition.y;
+  const angle = Math.atan2(deltaY, deltaX);
+
+  const offsetX = Math.cos(angle) * repelStrength * 80;
+  const offsetY = Math.sin(angle) * repelStrength * 80;
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springConfig = { damping: 20, stiffness: 150 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  useEffect(() => {
+    x.set(offsetX);
+    y.set(offsetY);
+  }, [offsetX, offsetY, x, y]);
+
+  return (
+    <motion.span
+      ref={letterRef}
+      className="text-[12vw] font-black select-none inline-block"
+      style={{
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+        background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
+        x: springX,
+        y: springY,
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{
+        opacity: 1,
+        y: [0, -10, 0],
+      }}
+      transition={{
+        opacity: { duration: 1, delay: index * 0.05, ease: "easeOut" },
+        y: {
+          duration: 2 + index * 0.1,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: index * 0.1,
+        },
+      }}
+    >
+      {letter}
+    </motion.span>
   );
 }
