@@ -96,7 +96,7 @@ export default function Navbar() {
           </button>
 
           {showContactDropdown && (
-            <div className="absolute top-full right-0 pt-3 z-[2000]">
+            <div className="absolute top-full right-0 pt-1 z-[2000]">
               <div className="w-[240px] rounded-xl border border-white/10 overflow-hidden"
                    style={{
                      background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9))',
