@@ -96,13 +96,14 @@ export default function Navbar() {
           </button>
 
           {showContactDropdown && (
-            <div className="absolute top-full right-0 mt-4 w-[320px] sm:w-[380px] rounded-2xl border border-white/10 overflow-hidden z-[2000]"
-                 style={{
-                   background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9))',
-                   backdropFilter: 'blur(40px)',
-                   WebkitBackdropFilter: 'blur(40px)',
-                   boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                 }}>
+            <div className="absolute top-full right-0 pt-2 z-[2000]">
+              <div className="w-[320px] sm:w-[380px] rounded-2xl border border-white/10 overflow-hidden"
+                   style={{
+                     background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9))',
+                     backdropFilter: 'blur(40px)',
+                     WebkitBackdropFilter: 'blur(40px)',
+                     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                   }}>
               <div className="p-6 space-y-6">
                 <div>
                   <h4 className="text-base font-bold text-white mb-3">Sales Inquiries</h4>
@@ -160,6 +161,7 @@ export default function Navbar() {
                     <p>Monday - Friday, 9:00 AM - 6:00 PM EST</p>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           )}
