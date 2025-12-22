@@ -11,7 +11,7 @@
 }
 
 * {
-  cursor: crosshair;
+  cursor: none !important;
   box-sizing: border-box;
 }
 
