@@ -57,30 +57,32 @@ export default function Navbar() {
         </span>
       </Link>
 
-      <div className="flex gap-3 md:gap-6 lg:gap-8 items-center">
+      <div className="flex gap-2 md:gap-6 lg:gap-8 items-center">
         <Link
           to="/how-it-works"
-          className={`no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer hidden sm:block ${
+          className={`no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer ${
             location.pathname === '/how-it-works' ? 'text-white after:w-full' : 'text-white/90 after:w-0'
           }`}
         >
-          How It Works
+          <span className="hidden sm:inline">How It Works</span>
+          <span className="sm:hidden">Works</span>
         </Link>
         <button
           onClick={handleScheduleClick}
           data-cal-link="hugo.chambert/book-a-demo"
           data-cal-namespace="book-a-demo"
           data-cal-config='{"layout":"month_view"}'
-          className="text-white/90 no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-110 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer bg-transparent border-none p-0"
+          className="text-white/90 no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-110 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer bg-transparent border-none p-0"
         >
           <span className="hidden sm:inline">Schedule Demo</span>
           <span className="sm:hidden">Demo</span>
         </button>
         <a
           href="#contact"
-          className="text-white/90 no-underline text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer hidden sm:block"
+          className="text-white/90 no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer"
         >
-          Contact Us
+          <span className="hidden sm:inline">Contact Us</span>
+          <span className="sm:hidden">Contact</span>
         </a>
       </div>
     </nav>
