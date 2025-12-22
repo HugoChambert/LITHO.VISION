@@ -34,10 +34,27 @@ canvas {
     pointer-events: none;
 }
 
+/* Spline Viewer Container */
+.iframe-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.iframe-container spline-viewer {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+}
+
 /* Navbar */
 nav {
     position: fixed;
-    cursor: default; 
     top: 24px;
     left: 50%;
     transform: translateX(-50%);
@@ -56,8 +73,9 @@ nav {
     transition: all 0.3s ease;
 }
 
-nav a:hover {
-    cursor: pointer;
+nav,
+nav * {
+    cursor: auto !important;
 }
 
 .logo {
@@ -80,7 +98,6 @@ nav a:hover {
 }
 
 .logo span {
-    cursor: pointer;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -457,5 +474,82 @@ nav a:hover {
     .stone-texture {
         width: 100px;
         height: 100px;
+    }
+}
+/* Mobile Hero (for vertical screens) */
+.mobile-hero {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #92D6FF;
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-hero-content {
+    text-align: center;
+    padding: 0 40px;
+    max-width: 600px;
+    position: relative;
+    z-index: 501;
+}
+
+.mobile-hero *,
+.mobile-hero {
+    cursor: auto !important;
+}
+
+.mobile-hero-title {
+    font-family: 'HelveticaNeueLTPro-Bd', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 12vw, 5rem);
+    color: #ffffff;
+    margin: 0 0 30px 0;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-hero-tagline {
+    font-family: 'HelveticaNeueLTPro-Bd', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Query for Vertical/Portrait Screens */
+@media (orientation: portrait) {
+    .iframe-container {
+        display: none !important;
+    }
+    
+    .mobile-hero {
+        display: flex !important;
+    }
+    
+    canvas {
+        display: none !important;
+    }
+}
+
+/* Additional fallback for narrow screens regardless of orientation */
+@media (max-width: 768px) {
+    .iframe-container {
+        display: none !important;
+    }
+    
+    .mobile-hero {
+        display: flex !important;
+    }
+    
+    canvas {
+        display: none !important;
     }
 }
