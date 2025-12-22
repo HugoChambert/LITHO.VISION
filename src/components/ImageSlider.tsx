@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface ImageSliderProps {
   beforeImage: string;
@@ -15,43 +15,67 @@ export default function ImageSlider({
   afterLabel = "After",
   zoomAfter = false
 }: ImageSliderProps) {
-  const [showAfter, setShowAfter] = useState(false);
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isInteracting, setIsInteracting] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowAfter(prev => !prev);
-    }, 4000);
+  const handleMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
+    const container = e.currentTarget;
+    const rect = container.getBoundingClientRect();
+    let clientX: number;
 
-    return () => clearInterval(interval);
-  }, []);
+    if ('touches' in e) {
+      if (e.touches.length === 0) return;
+      clientX = e.touches[0].clientX;
+    } else {
+      clientX = e.clientX;
+    }
+
+    const x = clientX - rect.left;
+    const percentage = (x / rect.width) * 100;
+    setSliderPosition(Math.min(Math.max(percentage, 0), 100));
+  };
 
   return (
-    <div className="relative group">
+    <div className="relative group max-w-4xl mx-auto">
       <div
-        className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden select-none border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10"
+        className="relative w-full aspect-[16/10] rounded-3xl overflow-hidden cursor-ew-resize select-none border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10"
         style={{
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
         }}
+        onMouseMove={(e) => {
+          if (isInteracting) handleMove(e);
+        }}
+        onMouseEnter={() => setIsInteracting(true)}
+        onMouseDown={() => setIsInteracting(true)}
+        onMouseUp={() => setIsInteracting(false)}
+        onMouseLeave={() => setIsInteracting(false)}
+        onTouchMove={handleMove}
+        onTouchStart={(e) => {
+          setIsInteracting(true);
+          handleMove(e);
+        }}
+        onTouchEnd={() => setIsInteracting(false)}
+        onClick={handleMove}
       >
         <img
           src={beforeImage}
           alt={beforeLabel}
-          className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-1000 ${
-            showAfter ? 'opacity-0 scale-105' : 'opacity-100 scale-100'
-          }`}
+          className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
         />
 
-        <img
-          src={afterImage}
-          alt={afterLabel}
-          className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-1000 ${
-            showAfter ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          } ${zoomAfter ? 'scale-110' : ''}`}
-        />
+        <div
+          className="absolute inset-0 w-full h-full overflow-hidden"
+          style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+        >
+          <img
+            src={afterImage}
+            alt={afterLabel}
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ${zoomAfter ? 'scale-110' : 'group-hover:scale-105'}`}
+          />
+        </div>
 
-        <div className={`absolute top-3 md:top-4 left-3 md:left-4 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium text-white transition-all duration-500 ${
-          showAfter ? 'opacity-0 -translate-x-4' : 'opacity-100 translate-x-0'
-        }`}
+
+        <div className="absolute top-3 md:top-4 left-3 md:left-4 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium text-white transition-all duration-300 group-hover:scale-105"
              style={{
                background: 'rgba(0, 0, 0, 0.6)',
                backdropFilter: 'blur(10px)',
@@ -60,9 +84,7 @@ export default function ImageSlider({
           {beforeLabel}
         </div>
 
-        <div className={`absolute top-3 md:top-4 right-3 md:right-4 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium text-white transition-all duration-500 ${
-          showAfter ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-        }`}
+        <div className="absolute top-3 md:top-4 right-3 md:right-4 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium text-white transition-all duration-300 group-hover:scale-105"
              style={{
                background: 'rgba(0, 0, 0, 0.6)',
                backdropFilter: 'blur(10px)',
@@ -70,19 +92,10 @@ export default function ImageSlider({
              }}>
           {afterLabel}
         </div>
-
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          <div className={`w-2 h-2 rounded-full transition-all duration-500 ${
-            !showAfter ? 'bg-white w-6' : 'bg-white/40'
-          }`}></div>
-          <div className={`w-2 h-2 rounded-full transition-all duration-500 ${
-            showAfter ? 'bg-white w-6' : 'bg-white/40'
-          }`}></div>
-        </div>
       </div>
 
       <p className="text-center text-white/60 mt-4 md:mt-6 text-xs md:text-sm transition-all duration-300 group-hover:text-white/80">
-        Watch the AI transformation in action
+        Drag the slider to compare before and after results
       </p>
     </div>
   );
