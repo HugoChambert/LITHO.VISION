@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion, useMotionValue, useSpring, animate } from "motion/react";
 import { useEffect, useState, useRef } from "react";
 
 export default function Hero() {
@@ -47,23 +47,25 @@ export default function Hero() {
         }}
       />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-4">
-        <div className="relative flex items-center justify-center">
-          {letters.map((letter, index) => (
-            <FloatingLetter
-              key={index}
-              letter={letter}
-              index={index}
-              mousePosition={mousePosition}
-            />
-          ))}
-        </div>
+      <div className="absolute inset-0 z-10">
+        {letters.map((letter, index) => (
+          <FloatingLetter
+            key={index}
+            letter={letter}
+            index={index}
+            mousePosition={mousePosition}
+          />
+        ))}
+      </div>
+
+      <div className="absolute inset-0 flex items-center justify-center z-5 pointer-events-none">
         <motion.p
           className="text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none"
           style={{
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
             fontWeight: 300,
             letterSpacing: '0.05em',
+            marginTop: '200px',
           }}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -108,75 +110,130 @@ function FloatingLetter({
   index: number;
   mousePosition: { x: number; y: number };
 }) {
-  const letterRef = useRef<HTMLSpanElement>(null);
-  const [letterPosition, setLetterPosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (letterRef.current) {
-      const rect = letterRef.current.getBoundingClientRect();
-      const parentRect = letterRef.current.offsetParent?.getBoundingClientRect();
-      if (parentRect) {
-        setLetterPosition({
-          x: rect.left - parentRect.left + rect.width / 2,
-          y: rect.top - parentRect.top + rect.height / 2,
-        });
-      }
-    }
-  }, []);
-
-  const distance = Math.sqrt(
-    Math.pow(mousePosition.x - letterPosition.x, 2) +
-    Math.pow(mousePosition.y - letterPosition.y, 2)
-  );
-
-  const maxDistance = 200;
-  const repelStrength = Math.max(0, (maxDistance - distance) / maxDistance);
-
-  const deltaX = letterPosition.x - mousePosition.x;
-  const deltaY = letterPosition.y - mousePosition.y;
-  const angle = Math.atan2(deltaY, deltaX);
-
-  const offsetX = Math.cos(angle) * repelStrength * 80;
-  const offsetY = Math.sin(angle) * repelStrength * 80;
-
+  const baseX = useMotionValue(0);
+  const baseY = useMotionValue(0);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const springConfig = { damping: 20, stiffness: 150 };
+  const springConfig = { damping: 15, stiffness: 100 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
+  const [containerSize, setContainerSize] = useState({ width: 1000, height: 800 });
+
   useEffect(() => {
-    x.set(offsetX);
-    y.set(offsetY);
-  }, [offsetX, offsetY, x, y]);
+    if (typeof window !== 'undefined') {
+      setContainerSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+
+      const handleResize = () => {
+        setContainerSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      };
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  useEffect(() => {
+    const centerX = containerSize.width / 2;
+    const centerY = containerSize.height / 2;
+    const radius = 250;
+    const angleStep = (Math.PI * 2) / 11;
+    const angle = angleStep * index;
+
+    const startX = centerX + Math.cos(angle) * radius - 50;
+    const startY = centerY + Math.sin(angle) * radius - 50;
+
+    baseX.set(startX);
+    baseY.set(startY);
+    x.set(startX);
+    y.set(startY);
+
+    const randomX1 = startX + (Math.random() - 0.5) * 200;
+    const randomY1 = startY + (Math.random() - 0.5) * 200;
+    const randomX2 = startX + (Math.random() - 0.5) * 200;
+    const randomY2 = startY + (Math.random() - 0.5) * 200;
+
+    const duration = 8000 + Math.random() * 4000;
+
+    const animateFloat = async () => {
+      while (true) {
+        await animate(baseX, randomX1, { duration: duration / 4, ease: "easeInOut" });
+        await animate(baseX, randomX2, { duration: duration / 4, ease: "easeInOut" });
+        await animate(baseX, startX, { duration: duration / 4, ease: "easeInOut" });
+      }
+    };
+
+    const animateFloatY = async () => {
+      while (true) {
+        await animate(baseY, randomY1, { duration: duration / 4 + 500, ease: "easeInOut" });
+        await animate(baseY, randomY2, { duration: duration / 4 + 500, ease: "easeInOut" });
+        await animate(baseY, startY, { duration: duration / 4 + 500, ease: "easeInOut" });
+      }
+    };
+
+    animateFloat();
+    animateFloatY();
+  }, [index, baseX, baseY, containerSize]);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      const currentBaseX = baseX.get();
+      const currentBaseY = baseY.get();
+
+      const distance = Math.sqrt(
+        Math.pow(mousePosition.x - currentBaseX, 2) +
+        Math.pow(mousePosition.y - currentBaseY, 2)
+      );
+
+      const maxDistance = 250;
+      const repelStrength = Math.max(0, (maxDistance - distance) / maxDistance);
+
+      if (repelStrength > 0) {
+        const deltaX = currentBaseX - mousePosition.x;
+        const deltaY = currentBaseY - mousePosition.y;
+        const angle = Math.atan2(deltaY, deltaX);
+
+        const offsetX = Math.cos(angle) * repelStrength * 150;
+        const offsetY = Math.sin(angle) * repelStrength * 150;
+
+        x.set(currentBaseX + offsetX);
+        y.set(currentBaseY + offsetY);
+      } else {
+        x.set(currentBaseX);
+        y.set(currentBaseY);
+      }
+    };
+
+    const interval = setInterval(updatePosition, 16);
+    return () => clearInterval(interval);
+  }, [mousePosition, baseX, baseY, x, y]);
 
   return (
     <motion.span
-      ref={letterRef}
-      className="text-[12vw] font-black select-none inline-block"
+      className="absolute text-8xl md:text-9xl font-black select-none"
       style={{
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
         background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
-        x: springX,
-        y: springY,
+        left: springX,
+        top: springY,
       }}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, scale: 0.5 }}
       animate={{
         opacity: 1,
-        y: [0, -10, 0],
+        scale: 1,
       }}
       transition={{
-        opacity: { duration: 1, delay: index * 0.05, ease: "easeOut" },
-        y: {
-          duration: 2 + index * 0.1,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: index * 0.1,
-        },
+        opacity: { duration: 0.8, delay: index * 0.1, ease: "easeOut" },
+        scale: { duration: 0.8, delay: index * 0.1, ease: "backOut" },
       }}
     >
       {letter}
