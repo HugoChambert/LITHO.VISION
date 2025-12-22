@@ -77,13 +77,15 @@ export default function Navbar() {
           <span className="hidden sm:inline">Schedule Demo</span>
           <span className="sm:hidden">Demo</span>
         </button>
-        <a
-          href="#contact"
-          className="text-white/90 no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer"
+        <Link
+          to="/contact"
+          className={`no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer ${
+            location.pathname === '/contact' ? 'text-white after:w-full' : 'text-white/90 after:w-0'
+          }`}
         >
           <span className="hidden sm:inline">Contact Us</span>
           <span className="sm:hidden">Contact</span>
-        </a>
+        </Link>
       </div>
     </nav>
   );
