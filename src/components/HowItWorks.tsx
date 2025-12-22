@@ -140,6 +140,20 @@ export default function HowItWorks() {
           />
         </div>
 
+        <div className="mb-16 md:mb-24">
+          <ImageSlider
+            beforeImage="/assets/img/7.JPG"
+            afterImage="/assets/img/8.PNG"
+          />
+        </div>
+
+        <div className="mb-16 md:mb-24">
+          <ImageSlider
+            beforeImage="/assets/img/9.jpg"
+            afterImage="/assets/img/10.PNG"
+          />
+        </div>
+
         <div className="text-center p-8 md:p-12 rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group cursor-default relative overflow-hidden"
              style={{
                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
