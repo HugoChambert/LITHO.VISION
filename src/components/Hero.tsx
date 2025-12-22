@@ -223,8 +223,8 @@ function FloatingLetter({
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
-        left: springX,
-        top: springY,
+        x: springX,
+        y: springY,
       }}
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{
