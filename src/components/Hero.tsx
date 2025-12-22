@@ -3,6 +3,29 @@ import { motion } from "motion/react";
 export default function Hero() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
+      <svg className="absolute inset-0 w-full h-full opacity-0">
+        <filter id="noiseFilter">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="1.5"
+            numOctaves="4"
+            stitchTiles="stitch"
+          />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+      </svg>
+
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.55'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+          backgroundSize: '200px 200px',
+          opacity: 0.4,
+          mixBlendMode: 'overlay',
+        }}
+      />
+
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-4">
         <motion.h1
           className="text-[12vw] font-black tracking-tight select-none relative"
