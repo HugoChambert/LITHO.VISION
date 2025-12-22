@@ -1,11 +1,9 @@
 import HowItWorks from "@/components/HowItWorks"
-import FloatingParticles from "@/components/FloatingParticles"
 
 export default function HowItWorksPage() {
   return (
-    <>
-      <FloatingParticles />
+    <div className="min-h-screen bg-gradient-to-b from-blue-950 to-black">
       <HowItWorks />
-    </>
+    </div>
   )
 }
