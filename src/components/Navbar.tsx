@@ -1,7 +1,10 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useState, useRef } from 'react'
 
 export default function Navbar() {
   const location = useLocation()
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const navRef = useRef<HTMLElement>(null)
 
   const handleScheduleClick = () => {
     if (typeof window !== 'undefined' && (window as any).Cal) {
@@ -12,22 +15,46 @@ export default function Navbar() {
     }
   };
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (navRef.current) {
+      const rect = navRef.current.getBoundingClientRect()
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      })
+    }
+  }
+
   return (
-    <nav className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-between gap-4 md:gap-12 lg:gap-20 px-4 md:px-8 lg:px-12 py-3 md:py-4 rounded-full border border-white/10 transition-all duration-500 w-[95%] md:w-auto md:min-w-[650px] lg:min-w-[700px] max-w-[1200px] hover:border-white/30 hover:shadow-2xl hover:shadow-white/10 group"
+    <nav
+      ref={navRef}
+      onMouseMove={handleMouseMove}
+      className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-between gap-4 md:gap-12 lg:gap-20 px-4 md:px-8 lg:px-12 py-3 md:py-4 rounded-full border border-white/10 transition-all duration-500 w-[95%] md:w-auto md:min-w-[650px] lg:min-w-[700px] max-w-[1200px] hover:border-white/30 hover:shadow-2xl hover:shadow-white/10 group overflow-hidden"
          style={{
            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02))',
            backdropFilter: 'blur(40px) saturate(180%)',
            WebkitBackdropFilter: 'blur(40px) saturate(180%)',
            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
          }}>
+      <div
+        className="pointer-events-none absolute rounded-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+        style={{
+          width: '300px',
+          height: '300px',
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 40%, transparent 70%)',
+          filter: 'blur(20px)',
+        }}
+      />
       <Link
         to="/"
-        className="flex items-center gap-2.5 text-xs md:text-sm lg:text-[15px] font-semibold text-white no-underline tracking-[-0.02em] transition-all duration-500 hover:-translate-y-1 hover:scale-105 cursor-pointer whitespace-nowrap relative group/logo"
+        className="flex items-center gap-2.5 text-xs md:text-sm lg:text-[15px] font-semibold text-white no-underline tracking-[-0.02em] cursor-pointer whitespace-nowrap relative z-10"
       >
-        <span className="font-semibold uppercase tracking-wider leading-none relative z-10" style={{ fontFamily: 'HelveticaNeueLTPro-Bd, Helvetica, Arial, sans-serif' }}>
+        <span className="font-semibold uppercase tracking-wider leading-none" style={{ fontFamily: 'HelveticaNeueLTPro-Bd, Helvetica, Arial, sans-serif' }}>
           LITHOVISION
         </span>
-        <div className="absolute inset-0 bg-white/5 rounded-full scale-0 group-hover/logo:scale-100 transition-transform duration-300 -z-0"></div>
       </Link>
 
       <div className="flex gap-3 md:gap-6 lg:gap-8 items-center">
