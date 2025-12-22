@@ -1,8 +1,41 @@
 import { motion } from "motion/react";
+import { useState, useRef } from "react";
 
 export default function Hero() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const heroRef = useRef<HTMLDivElement>(null)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (heroRef.current) {
+      const rect = heroRef.current.getBoundingClientRect()
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      })
+    }
+  }
+
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
+    <div
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      className="relative w-full h-screen overflow-hidden bg-black"
+    >
+      <div
+        className="pointer-events-none absolute rounded-full transition-all duration-200"
+        style={{
+          width: '800px',
+          height: '800px',
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 30%, rgba(255, 255, 255, 0.01) 50%, transparent 70%)',
+          backdropFilter: 'blur(60px)',
+          WebkitBackdropFilter: 'blur(60px)',
+          filter: 'blur(40px)',
+        }}
+      />
+
       <div className="absolute inset-0 opacity-30">
         {[...Array(30)].map((_, i) => (
           <motion.div
@@ -37,15 +70,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          whileHover={{ scale: 1.02 }}
         >
           LITHOVISION
-          <motion.div
-            className="absolute -inset-4 bg-white/5 rounded-3xl -z-10"
-            initial={{ opacity: 0 }}
-            whileHover={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
         </motion.h1>
       </div>
 
