@@ -146,46 +146,6 @@ export default function HowItWorks() {
             afterImage="/assets/img/10.PNG"
           />
         </div>
-
-        <div className="text-center p-6 sm:p-8 md:p-10 lg:p-12 rounded-2xl sm:rounded-3xl border border-white/10 transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group cursor-default relative overflow-hidden mx-2 sm:mx-0"
-             style={{
-               background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01))',
-               backdropFilter: 'blur(20px) saturate(180%)',
-               WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08)'
-             }}>
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3 md:mb-4 transition-all duration-300 group-hover:scale-105 relative z-10 px-2">
-            Ready to get started?
-          </h3>
-          <p className="text-white/70 mb-5 sm:mb-6 md:mb-8 text-sm sm:text-base md:text-lg transition-all duration-300 group-hover:text-white/90 relative z-10 px-2">
-            Schedule a demo to see how Lithovision can transform your projects
-          </p>
-          <button
-            onClick={() => {
-              if (typeof window !== 'undefined' && (window as any).Cal) {
-                (window as any).Cal.ns['book-a-demo']('ui', {
-                  hideEventTypeDetails: false,
-                  layout: 'month_view'
-                });
-              }
-            }}
-            data-cal-link="hugo.chambert/book-a-demo"
-            data-cal-namespace="book-a-demo"
-            data-cal-config='{"layout":"month_view"}'
-            className="px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full text-sm sm:text-base md:text-lg font-medium text-white transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/50 cursor-pointer relative overflow-hidden group/btn z-10"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3)'
-            }}
-          >
-            <span className="relative z-10">Schedule Demo</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/30 to-blue-500/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
-          </button>
-        </div>
       </div>
     </section>
   );
