@@ -1,25 +1,8 @@
 import { motion } from "motion/react";
-import { useState, useRef } from "react";
-import MagneticButton from "./MagneticButton";
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-    const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-    setMousePosition({ x: x * 20, y: y * 20 });
-  };
-
   return (
-    <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      className="relative w-full h-screen overflow-hidden"
-    >
+    <div className="relative w-full h-screen overflow-hidden">
       <svg className="absolute inset-0 w-full h-full opacity-0">
         <filter id="noiseFilter">
           <feTurbulence
@@ -45,36 +28,22 @@ export default function Hero() {
 
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-4">
         <motion.h1
-          className="text-[12vw] md:text-[10vw] lg:text-[12vw] font-black tracking-tight select-none relative cursor-default"
+          className="text-[12vw] font-black tracking-tight select-none relative"
           style={{
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
             background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
-            transformStyle: 'preserve-3d',
           }}
           initial={{ opacity: 0, y: 20 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            rotateX: mousePosition.y * 0.5,
-            rotateY: mousePosition.x * 0.5,
-          }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          whileHover={{ scale: 1.02 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
-          <span
-            className="inline-block"
-            style={{
-              textShadow: `${mousePosition.x * 2}px ${mousePosition.y * 2}px 40px rgba(59, 130, 246, 0.6)`,
-            }}
-          >
-            LITHOVISION
-          </span>
+          LITHOVISION
         </motion.h1>
         <motion.p
-          className="text-lg md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none px-4 text-center"
+          className="text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none"
           style={{
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
             fontWeight: 300,
@@ -86,17 +55,6 @@ export default function Hero() {
         >
           See the stone. Sell with certainty
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="mt-4 md:mt-8"
-        >
-          <MagneticButton className="px-8 md:px-12 py-4 md:py-5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full text-base md:text-lg font-bold hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 border border-white/20">
-            Explore Features
-          </MagneticButton>
-        </motion.div>
       </div>
 
       <motion.div
