@@ -76,7 +76,7 @@ export default function WaterBlobs() {
     };
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(135, 206, 235, 1)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const imageData = ctx.createImageData(canvas.width, canvas.height);
@@ -144,10 +144,10 @@ export default function WaterBlobs() {
           if (value > threshold) {
             const intensity = Math.min(1, (value - threshold) * 0.5);
 
-            const r = Math.floor(100 + intensity * 155);
-            const g = Math.floor(180 + intensity * 75);
-            const b = 255;
-            const a = Math.floor(200 + intensity * 55);
+            const r = Math.floor(50 + intensity * 100);
+            const g = Math.floor(150 + intensity * 105);
+            const b = Math.floor(200 + intensity * 55);
+            const a = Math.floor(180 + intensity * 75);
 
             for (let dy = 0; dy < step && y + dy < canvas.height; dy++) {
               for (let dx = 0; dx < step && x + dx < canvas.width; dx++) {

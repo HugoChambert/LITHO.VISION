@@ -3,7 +3,7 @@ import WaterBlobs from "./WaterBlobs";
 
 export default function Hero() {
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-[#87CEEB]">
+    <div className="relative w-full h-screen overflow-hidden bg-black">
       <WaterBlobs />
 
       <div className="absolute inset-0 flex items-center justify-center z-10">
@@ -42,7 +42,7 @@ export default function Hero() {
       <div
         className="absolute bottom-0 left-0 right-0 h-64 pointer-events-none"
         style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(135, 206, 235, 0.3) 40%, rgba(135, 206, 235, 0.7) 70%, #87CEEB 100%)',
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.7) 70%, #000000 100%)',
         }}
       />
     </div>
