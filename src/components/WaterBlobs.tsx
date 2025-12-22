@@ -39,8 +39,8 @@ export default function WaterBlobs() {
         blobsRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 4,
-          vy: (Math.random() - 0.5) * 4,
+          vx: (Math.random() - 0.5) * 8,
+          vy: (Math.random() - 0.5) * 8,
           radius: 60 + Math.random() * 80,
         });
       }
@@ -97,11 +97,11 @@ export default function WaterBlobs() {
           }
         }
 
-        blob.vx += (Math.random() - 0.5) * 0.3;
-        blob.vy += (Math.random() - 0.5) * 0.3;
+        blob.vx += (Math.random() - 0.5) * 0.8;
+        blob.vy += (Math.random() - 0.5) * 0.8;
 
-        blob.vx *= 0.995;
-        blob.vy *= 0.995;
+        blob.vx *= 0.998;
+        blob.vy *= 0.998;
 
         blob.x += blob.vx;
         blob.y += blob.vy;
@@ -132,8 +132,8 @@ export default function WaterBlobs() {
 
           if (dist < blob.radius + other.radius) {
             const force = (blob.radius + other.radius - dist) / dist;
-            blob.vx -= (dx / dist) * force * 0.05;
-            blob.vy -= (dy / dist) * force * 0.05;
+            blob.vx -= (dx / dist) * force * 0.12;
+            blob.vy -= (dy / dist) * force * 0.12;
           }
         }
       });
