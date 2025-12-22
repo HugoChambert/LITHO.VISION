@@ -42,6 +42,10 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
     springConfig
   );
+  const opacity = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    springConfig
+  );
   const rotateZ = useSpring(
     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
     springConfig
@@ -59,7 +63,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[180vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
       style={{
         background: 'linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #ADD8E6 100%)',
       }}
@@ -79,6 +83,7 @@ export const HeroParallax = ({
           rotateX,
           rotateZ,
           translateY,
+          opacity,
         }}
         className=""
       >
