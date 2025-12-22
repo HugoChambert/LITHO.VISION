@@ -1,11 +1,12 @@
 import HeroParallaxDemo from "@/components/hero-parallax-demo"
-import Navbar from "@/components/Navbar"
+import SidebarDemo from "@/components/sidebar-demo"
 
 function App() {
   return (
     <div className="bg-black min-h-screen">
-      <Navbar />
-      <HeroParallaxDemo />
+      <SidebarDemo>
+        <HeroParallaxDemo />
+      </SidebarDemo>
     </div>
   )
 }
