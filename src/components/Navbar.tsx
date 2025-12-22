@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 
 export default function Navbar() {
   const location = useLocation()
@@ -27,18 +27,13 @@ export default function Navbar() {
     }
   }
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setShowContactDropdown(false)
-      }
-    }
+  const handleMouseEnter = () => {
+    setShowContactDropdown(true)
+  }
 
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [])
+  const handleMouseLeave = () => {
+    setShowContactDropdown(false)
+  }
 
   return (
     <nav
@@ -92,9 +87,8 @@ export default function Navbar() {
           <span className="hidden sm:inline">Schedule Demo</span>
           <span className="sm:hidden">Demo</span>
         </button>
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative" ref={dropdownRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <button
-            onClick={() => setShowContactDropdown(!showContactDropdown)}
             className="text-white/90 no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer bg-transparent border-none p-0"
           >
             <span className="hidden sm:inline">Contact Us</span>
