@@ -1,17 +1,10 @@
-import ScrollReveal from '../components/ScrollReveal';
-import AnimatedGradient from '../components/AnimatedGradient';
-
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
-      <AnimatedGradient />
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-24 relative z-10">
-        <ScrollReveal>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8">
-            Terms of Service
-          </h1>
-        </ScrollReveal>
+    <div className="min-h-screen bg-black">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-24">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8">
+          Terms of Service
+        </h1>
 
         <div className="space-y-6 text-white/70 text-sm sm:text-base leading-relaxed">
           <p className="text-white/50 text-sm">
@@ -19,8 +12,8 @@ export default function TermsPage() {
           </p>
 
           <p>
-            Please read these Terms of Service carefully before using LithoVision. By accessing or using our
-            platform, you agree to be bound by these terms.
+            Welcome to LithoVision. By accessing or using our platform, you agree to be bound by these Terms of Service.
+            Please read them carefully.
           </p>
 
           <h2 className="text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4">
@@ -28,8 +21,8 @@ export default function TermsPage() {
           </h2>
 
           <p>
-            By creating an account or using LithoVision, you agree to these Terms of Service and our Privacy Policy.
-            If you do not agree, you may not use our services.
+            By creating an account or using LithoVision's services, you agree to these terms and our Privacy Policy.
+            If you don't agree to these terms, you may not use our services.
           </p>
 
           <h2 className="text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4">
@@ -37,15 +30,14 @@ export default function TermsPage() {
           </h2>
 
           <p>
-            You agree to use LithoVision only for lawful purposes and in accordance with these terms. You are
-            responsible for:
+            LithoVision provides AI-powered stone visualization services. You agree to:
           </p>
 
           <ul className="space-y-2 list-disc list-inside ml-4">
-            <li>Maintaining the confidentiality of your account credentials</li>
-            <li>All activities that occur under your account</li>
-            <li>Ensuring uploaded content does not violate any third-party rights</li>
-            <li>Complying with all applicable laws and regulations</li>
+            <li>Use the service only for lawful purposes</li>
+            <li>Not upload inappropriate or copyrighted content without permission</li>
+            <li>Maintain the security of your account credentials</li>
+            <li>Not attempt to reverse engineer or copy our technology</li>
           </ul>
 
           <h2 className="text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4">
@@ -53,18 +45,18 @@ export default function TermsPage() {
           </h2>
 
           <p>
-            The LithoVision platform, including its software, design, and content, is protected by copyright,
-            trademark, and other intellectual property laws. You retain ownership of the images you upload,
-            but grant us a license to process them for visualization purposes.
+            LithoVision retains all rights to our platform, technology, and generated visualizations. You retain
+            ownership of the images you upload. By using our service, you grant us a license to process your images
+            for visualization purposes.
           </p>
 
           <h2 className="text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4">
-            4. Subscription and Payment
+            4. Payment Terms
           </h2>
 
           <p>
-            Access to LithoVision requires a paid subscription. You agree to pay all fees associated with your
-            chosen plan. Fees are non-refundable except as required by law or as explicitly stated in our refund policy.
+            Subscription fees are billed according to your chosen plan. Payments are non-refundable except as
+            required by law. We reserve the right to change pricing with 30 days notice.
           </p>
 
           <h2 className="text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4">
@@ -72,8 +64,8 @@ export default function TermsPage() {
           </h2>
 
           <p>
-            LithoVision is provided "as is" without warranties of any kind. We are not liable for any indirect,
-            incidental, special, or consequential damages arising from your use of the service.
+            LithoVision is provided "as is" without warranties. We are not liable for any indirect, incidental,
+            or consequential damages arising from your use of the service.
           </p>
 
           <h2 className="text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4">
@@ -81,25 +73,17 @@ export default function TermsPage() {
           </h2>
 
           <p>
-            We reserve the right to suspend or terminate your account at any time for violation of these terms.
-            You may cancel your subscription at any time through your account settings.
+            We may suspend or terminate your account for violation of these terms. You may cancel your subscription
+            at any time through your account settings.
           </p>
 
           <h2 className="text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4">
-            7. Changes to Terms
+            7. Contact
           </h2>
 
           <p>
-            We may modify these terms at any time. Continued use of LithoVision after changes constitutes
-            acceptance of the new terms.
-          </p>
-
-          <h2 className="text-xl sm:text-2xl font-bold text-white mt-10 sm:mt-12 mb-4">
-            8. Contact Information
-          </h2>
-
-          <p>
-            For questions about these Terms of Service, please contact us at{' '}
+            For questions about these Terms of Service, contact us at:
+            <br />
             <a href="mailto:legal@lithovision.com" className="text-white hover:underline">
               legal@lithovision.com
             </a>

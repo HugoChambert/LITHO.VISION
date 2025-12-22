@@ -1,12 +1,8 @@
 import { motion } from "motion/react";
-import AnimatedGradient from "./AnimatedGradient";
-import MagneticButton from "./MagneticButton";
 
 export default function Hero() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <AnimatedGradient />
-
       <svg className="absolute inset-0 w-full h-full opacity-0">
         <filter id="noiseFilter">
           <feTurbulence
@@ -30,30 +26,24 @@ export default function Hero() {
         }}
       />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-4 px-4">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 gap-4">
+        <motion.h1
+          className="text-[12vw] font-black tracking-tight select-none relative"
+          style={{
+            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+            background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h1
-            className="text-[12vw] sm:text-[10vw] md:text-[12vw] font-black tracking-tight select-none relative"
-            style={{
-              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-              background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
-              backgroundSize: '200% 200%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '0 0 80px rgba(59, 130, 246, 0.3)',
-              animation: 'gradient-shift 8s ease infinite',
-            }}
-          >
-            LITHOVISION
-          </h1>
-        </motion.div>
-
+          LITHOVISION
+        </motion.h1>
         <motion.p
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none text-center"
+          className="text-xl md:text-2xl lg:text-3xl text-white/90 tracking-wide select-none"
           style={{
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
             fontWeight: 300,
@@ -65,27 +55,6 @@ export default function Hero() {
         >
           See the stone. Sell with certainty
         </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="mt-8"
-        >
-          <MagneticButton
-            onClick={() => {
-              if (typeof window !== 'undefined' && (window as any).Cal) {
-                (window as any).Cal.ns['book-a-demo']('ui', {
-                  hideEventTypeDetails: false,
-                  layout: 'month_view'
-                });
-              }
-            }}
-            className="px-8 py-4 rounded-full text-base font-medium text-white glass-effect hover-lift transition-all duration-300"
-          >
-            Request Demo
-          </MagneticButton>
-        </motion.div>
       </div>
 
       <motion.div
