@@ -10,7 +10,7 @@ export default function Navbar() {
         href="/"
         className="flex items-center gap-2.5 text-[15px] font-semibold text-black no-underline tracking-[-0.02em] transition-all duration-300 hover:-translate-y-1 hover:opacity-90 cursor-auto"
       >
-        <span className="font-semibold uppercase tracking-wider leading-none">
+        <span className="font-semibold uppercase tracking-wider leading-none" style={{ fontFamily: 'HelveticaNeueLTPro-Bd, Helvetica, Arial, sans-serif' }}>
           LITHOVISION
         </span>
       </a>

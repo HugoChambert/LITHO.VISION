@@ -1,15 +1,14 @@
 import { motion } from "motion/react";
-import WaterBlobs from "./WaterBlobs";
 
 export default function Hero() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      <WaterBlobs />
 
       <div className="absolute inset-0 flex items-center justify-center z-10">
         <motion.h1
           className="text-[12vw] font-black tracking-tight select-none"
           style={{
+            fontFamily: 'HelveticaNeueLTPro-Bd, Helvetica, Arial, sans-serif',
             background: 'linear-gradient(135deg, #ffffff 0%, #e0f7ff 50%, #ffffff 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
