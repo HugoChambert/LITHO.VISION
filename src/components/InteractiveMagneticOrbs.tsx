@@ -1,33 +1,35 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'motion/react';
 
-interface Orb {
+interface Particle {
   id: number;
   x: number;
   y: number;
   vx: number;
   vy: number;
   size: number;
-  color: string;
+  opacity: number;
+  shape: 'circle' | 'square' | 'triangle';
 }
 
 export default function InteractiveMagneticOrbs() {
-  const [orbs, setOrbs] = useState<Orb[]>([]);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
   const containerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number>();
 
   useEffect(() => {
-    const initialOrbs: Orb[] = Array.from({ length: 5 }, (_, i) => ({
+    const shapes: ('circle' | 'square' | 'triangle')[] = ['circle', 'square', 'triangle'];
+    const initialParticles: Particle[] = Array.from({ length: 40 }, (_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      size: 60 + Math.random() * 80,
-      color: ['rgba(59, 130, 246, 0.3)', 'rgba(147, 51, 234, 0.3)', 'rgba(236, 72, 153, 0.3)', 'rgba(34, 211, 238, 0.3)'][i % 4],
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      size: 3 + Math.random() * 5,
+      opacity: 0.3 + Math.random() * 0.5,
+      shape: shapes[Math.floor(Math.random() * shapes.length)],
     }));
-    setOrbs(initialOrbs);
+    setParticles(initialParticles);
 
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -36,36 +38,36 @@ export default function InteractiveMagneticOrbs() {
     window.addEventListener('mousemove', handleMouseMove);
 
     const animate = () => {
-      setOrbs((prevOrbs) =>
-        prevOrbs.map((orb) => {
-          let { x, y, vx, vy } = orb;
+      setParticles((prevParticles) =>
+        prevParticles.map((particle) => {
+          let { x, y, vx, vy } = particle;
 
-          const dx = mousePosition.x - x;
-          const dy = mousePosition.y - y;
+          const dx = x - mousePosition.x;
+          const dy = y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 300 && distance > 0) {
-            const force = (300 - distance) / 300;
-            vx += (dx / distance) * force * 0.3;
-            vy += (dy / distance) * force * 0.3;
+          if (distance < 150 && distance > 0) {
+            const force = (150 - distance) / 150;
+            vx += (dx / distance) * force * 1.2;
+            vy += (dy / distance) * force * 1.2;
           }
 
-          vx *= 0.98;
-          vy *= 0.98;
+          vx *= 0.95;
+          vy *= 0.95;
 
           x += vx;
           y += vy;
 
           if (x < 0 || x > window.innerWidth) {
-            vx *= -0.8;
+            vx *= -0.5;
             x = Math.max(0, Math.min(window.innerWidth, x));
           }
           if (y < 0 || y > window.innerHeight) {
-            vy *= -0.8;
+            vy *= -0.5;
             y = Math.max(0, Math.min(window.innerHeight, y));
           }
 
-          return { ...orb, x, y, vx, vy };
+          return { ...particle, x, y, vx, vy };
         })
       );
 
@@ -82,53 +84,77 @@ export default function InteractiveMagneticOrbs() {
     };
   }, [mousePosition.x, mousePosition.y]);
 
+  const renderParticle = (particle: Particle) => {
+    const baseStyle = {
+      position: 'absolute' as const,
+      left: particle.x,
+      top: particle.y,
+      width: particle.size,
+      height: particle.size,
+      opacity: particle.opacity,
+      willChange: 'transform',
+    };
+
+    switch (particle.shape) {
+      case 'circle':
+        return (
+          <div
+            key={particle.id}
+            style={{
+              ...baseStyle,
+              borderRadius: '50%',
+              background: 'rgba(59, 130, 246, 0.8)',
+              boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)',
+            }}
+          />
+        );
+      case 'square':
+        return (
+          <div
+            key={particle.id}
+            style={{
+              ...baseStyle,
+              background: 'rgba(34, 211, 238, 0.8)',
+              boxShadow: '0 0 10px rgba(34, 211, 238, 0.5)',
+              transform: 'rotate(45deg)',
+            }}
+          />
+        );
+      case 'triangle':
+        return (
+          <div
+            key={particle.id}
+            style={{
+              ...baseStyle,
+              width: 0,
+              height: 0,
+              borderLeft: `${particle.size / 2}px solid transparent`,
+              borderRight: `${particle.size / 2}px solid transparent`,
+              borderBottom: `${particle.size}px solid rgba(147, 197, 253, 0.8)`,
+              boxShadow: '0 0 10px rgba(147, 197, 253, 0.5)',
+            }}
+          />
+        );
+    }
+  };
+
   return (
     <div
       ref={containerRef}
       className="fixed inset-0 pointer-events-none z-20"
       style={{ overflow: 'hidden' }}
     >
-      {orbs.map((orb) => (
-        <motion.div
-          key={orb.id}
-          className="absolute rounded-full blur-2xl"
-          style={{
-            width: orb.size,
-            height: orb.size,
-            background: `radial-gradient(circle, ${orb.color} 0%, transparent 70%)`,
-            left: orb.x - orb.size / 2,
-            top: orb.y - orb.size / 2,
-            willChange: 'transform',
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: orb.id * 0.2,
-          }}
-        />
-      ))}
+      {particles.map((particle) => renderParticle(particle))}
 
-      <motion.div
-        className="absolute rounded-full pointer-events-none"
+      <div
+        className="absolute rounded-full pointer-events-none transition-opacity duration-300"
         style={{
-          width: 20,
-          height: 20,
-          left: mousePosition.x - 10,
-          top: mousePosition.y - 10,
-          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(59, 130, 246, 0.4) 50%, transparent 70%)',
-          boxShadow: '0 0 20px rgba(59, 130, 246, 0.6)',
-        }}
-        animate={{
-          scale: [1, 1.5, 1],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
+          width: 150,
+          height: 150,
+          left: mousePosition.x - 75,
+          top: mousePosition.y - 75,
+          border: '1px solid rgba(59, 130, 246, 0.2)',
+          opacity: mousePosition.x > 0 ? 0.5 : 0,
         }}
       />
     </div>
