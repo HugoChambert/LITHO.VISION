@@ -44,18 +44,23 @@ export default function InteractiveMagneticOrbs() {
         prevParticles.map((particle) => {
           let { x, y, vx, vy } = particle;
 
+          const currentSpeed = Math.sqrt(vx * vx + vy * vy);
+
           const dx = x - mousePosition.x;
           const dy = y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 120 && distance > 0) {
             const force = (120 - distance) / 120;
-            vx += (dx / distance) * force * 2;
-            vy += (dy / distance) * force * 2;
-          }
+            vx += (dx / distance) * force * 0.5;
+            vy += (dy / distance) * force * 0.5;
 
-          vx *= 0.98;
-          vy *= 0.98;
+            const newSpeed = Math.sqrt(vx * vx + vy * vy);
+            if (newSpeed > 0) {
+              vx = (vx / newSpeed) * currentSpeed;
+              vy = (vy / newSpeed) * currentSpeed;
+            }
+          }
 
           x += vx;
           y += vy;
