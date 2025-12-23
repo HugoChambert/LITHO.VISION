@@ -6,7 +6,7 @@ export default function HeroParallaxDemo() {
 }
 
 export const products = [
-  // Row 1 (scrolls right to left)
+  // Row 1 (scrolls right to left) - 5 images
   {
     title: "Testimonial",
     link: "#",
@@ -33,7 +33,7 @@ export const products = [
     thumbnail: "/assets/img/t5.png",
   },
 
-  // Row 2 (scrolls left to right)
+  // Row 2 (scrolls left to right) - 5 images
   {
     title: "Testimonial",
     link: "#",
@@ -60,7 +60,7 @@ export const products = [
     thumbnail: "/assets/img/t10.png",
   },
 
-  // Row 3 (scrolls right to left)
+  // Row 3 (scrolls right to left) - 5 images
   {
     title: "Testimonial",
     link: "#",
@@ -70,5 +70,20 @@ export const products = [
     title: "Testimonial",
     link: "#",
     thumbnail: "/assets/img/t12.png",
+  },
+  {
+    title: "Testimonial",
+    link: "#",
+    thumbnail: "/assets/img/t13.png",
+  },
+  {
+    title: "Testimonial",
+    link: "#",
+    thumbnail: "/assets/img/t14.png",
+  },
+  {
+    title: "Testimonial",
+    link: "#",
+    thumbnail: "/assets/img/t15.png",
   },
 ];
