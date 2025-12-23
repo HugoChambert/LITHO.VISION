@@ -62,7 +62,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[180vh] py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[180vh] py-10 sm:py-16 md:py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
       style={{
         background: '#000000',
       }}
@@ -86,7 +86,7 @@ export const HeroParallax = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-8 sm:space-x-12 md:space-x-20 mb-12 sm:mb-16 md:mb-20">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
@@ -95,7 +95,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row mb-12 sm:mb-16 md:mb-20 space-x-8 sm:space-x-12 md:space-x-20">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -104,7 +104,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-8 sm:space-x-12 md:space-x-20">
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
@@ -120,11 +120,11 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-10 md:py-20 px-4 w-full  left-0 top-0">
-      <h1 className="text-2xl md:text-7xl font-bold text-white drop-shadow-lg">
+    <div className="max-w-7xl relative mx-auto py-6 sm:py-10 md:py-20 px-4 sm:px-6 md:px-8 w-full left-0 top-0">
+      <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg leading-tight">
         Proven Excellence
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 text-white drop-shadow-md">
+      <p className="max-w-2xl text-sm sm:text-base md:text-lg lg:text-xl mt-4 sm:mt-6 md:mt-8 text-white/90 drop-shadow-md">
        Where Vision Meets Results
       </p>
     </div>
@@ -141,6 +141,8 @@ export const ProductCard = ({
   };
   translate: MotionValue<number>;
 }) => {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
   return (
     <motion.div
       style={{
@@ -150,15 +152,23 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative shrink-0"
+      className="group/product h-64 w-80 sm:h-80 sm:w-96 md:h-96 md:w-[30rem] relative shrink-0"
     >
-     <img
-          src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-contain absolute h-full w-full inset-0"
-          alt={product.title}
-        />
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-white/5 animate-pulse rounded-lg" />
+      )}
+      <img
+        src={product.thumbnail}
+        height="600"
+        width="600"
+        loading="lazy"
+        decoding="async"
+        className={`object-contain absolute h-full w-full inset-0 transition-opacity duration-300 ${
+          isLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        alt={product.title}
+        onLoad={() => setIsLoaded(true)}
+      />
     </motion.div>
   );
 };

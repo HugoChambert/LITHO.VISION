@@ -25,6 +25,8 @@ export default function ImageSlider({
         const img = new Image();
         img.onload = () => resolve();
         img.onerror = reject;
+        img.loading = 'eager';
+        img.decoding = 'async';
         img.src = src;
       });
     };
@@ -36,6 +38,7 @@ export default function ImageSlider({
       setImagesLoaded(true);
     }).catch(err => {
       console.error('Error loading images:', err);
+      setImagesLoaded(true);
     });
   }, [beforeImage, afterImage]);
 
@@ -81,34 +84,39 @@ export default function ImageSlider({
         onTouchMove={handleTouchMove}
       >
         {!imagesLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-white/50 text-sm">Loading images...</div>
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-10 h-10 border-3 border-white/20 border-t-white rounded-full animate-spin"></div>
+              <div className="text-white/70 text-xs sm:text-sm font-medium">Loading...</div>
+            </div>
           </div>
         )}
 
-        <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}>
           <img
             src={beforeImage}
             alt={beforeLabel}
             className="absolute inset-0 w-full h-full object-cover object-center"
             draggable={false}
             loading="eager"
+            decoding="async"
           />
         </div>
 
         <div
-          className={`absolute inset-0 w-full h-full overflow-hidden transition-opacity duration-300 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full overflow-hidden transition-opacity duration-500 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{
             clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
           }}
         >
-          <div className={`absolute inset-0 w-full h-full ${zoomAfter ? 'scale-110' : ''}`}>
+          <div className={`absolute inset-0 w-full h-full transition-transform duration-300 ${zoomAfter ? 'scale-110' : ''}`}>
             <img
               src={afterImage}
               alt={afterLabel}
               className="absolute inset-0 w-full h-full object-cover object-center"
               draggable={false}
               loading="eager"
+              decoding="async"
             />
           </div>
         </div>
