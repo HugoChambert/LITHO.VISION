@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface ImageSliderProps {
   beforeImage: string;
@@ -16,7 +16,28 @@ export default function ImageSlider({
   zoomAfter = false
 }: ImageSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const loadImage = (src: string): Promise<void> => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = reject;
+        img.src = src;
+      });
+    };
+
+    Promise.all([
+      loadImage(beforeImage),
+      loadImage(afterImage)
+    ]).then(() => {
+      setImagesLoaded(true);
+    }).catch(err => {
+      console.error('Error loading images:', err);
+    });
+  }, [beforeImage, afterImage]);
 
   const handleMove = (clientX: number) => {
     if (!containerRef.current) return;
@@ -51,24 +72,32 @@ export default function ImageSlider({
         ref={containerRef}
         className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-ew-resize select-none border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10"
         style={{
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)'
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
+          backgroundColor: '#000'
         }}
         onMouseDown={handleInteractionStart}
         onMouseMove={handleMouseMove}
         onTouchStart={handleInteractionStart}
         onTouchMove={handleTouchMove}
       >
-        <div className="absolute inset-0 w-full h-full">
+        {!imagesLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-white/50 text-sm">Loading images...</div>
+          </div>
+        )}
+
+        <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}>
           <img
             src={beforeImage}
             alt={beforeLabel}
             className="absolute inset-0 w-full h-full object-cover object-center"
             draggable={false}
+            loading="eager"
           />
         </div>
 
         <div
-          className="absolute inset-0 w-full h-full overflow-hidden"
+          className={`absolute inset-0 w-full h-full overflow-hidden transition-opacity duration-300 ${imagesLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{
             clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
           }}
@@ -79,6 +108,7 @@ export default function ImageSlider({
               alt={afterLabel}
               className="absolute inset-0 w-full h-full object-cover object-center"
               draggable={false}
+              loading="eager"
             />
           </div>
         </div>
