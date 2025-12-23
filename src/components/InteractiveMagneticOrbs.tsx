@@ -9,16 +9,18 @@ interface Particle {
   size: number;
   opacity: number;
   shape: 'circle' | 'square' | 'triangle';
+  shimmer: boolean;
 }
 
 export default function InteractiveMagneticOrbs() {
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
   const containerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number>();
 
   useEffect(() => {
     const shapes: ('circle' | 'square' | 'triangle')[] = ['circle', 'square', 'triangle'];
-    const initialParticles: Particle[] = Array.from({ length: 40 }, (_, i) => ({
+    const initialParticles: Particle[] = Array.from({ length: 70 }, (_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
@@ -27,13 +29,33 @@ export default function InteractiveMagneticOrbs() {
       size: 3 + Math.random() * 5,
       opacity: 0.3 + Math.random() * 0.5,
       shape: shapes[Math.floor(Math.random() * shapes.length)],
+      shimmer: Math.random() > 0.6,
     }));
     setParticles(initialParticles);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
 
     const animate = () => {
       setParticles((prevParticles) =>
         prevParticles.map((particle) => {
           let { x, y, vx, vy } = particle;
+
+          const dx = x - mousePosition.x;
+          const dy = y - mousePosition.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 120 && distance > 0) {
+            const force = (120 - distance) / 120;
+            vx += (dx / distance) * force * 2;
+            vy += (dy / distance) * force * 2;
+          }
+
+          vx *= 0.98;
+          vy *= 0.98;
 
           x += vx;
           y += vy;
@@ -57,21 +79,32 @@ export default function InteractiveMagneticOrbs() {
     animate();
 
     return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, []);
+  }, [mousePosition.x, mousePosition.y]);
 
   const renderParticle = (particle: Particle) => {
+    const fadeThreshold = window.innerHeight * 0.75;
+    const fadeStart = window.innerHeight * 0.65;
+    let calculatedOpacity = particle.opacity;
+
+    if (particle.y > fadeStart) {
+      const fadeProgress = (particle.y - fadeStart) / (fadeThreshold - fadeStart);
+      calculatedOpacity = particle.opacity * (1 - Math.min(fadeProgress, 1));
+    }
+
     const baseStyle = {
       position: 'absolute' as const,
       left: particle.x,
       top: particle.y,
       width: particle.size,
       height: particle.size,
-      opacity: particle.opacity,
+      opacity: calculatedOpacity,
       willChange: 'transform',
+      animation: particle.shimmer ? 'shimmer 2s ease-in-out infinite' : 'none',
     };
 
     switch (particle.shape) {
