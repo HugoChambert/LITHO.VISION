@@ -8,6 +8,8 @@ interface Particle {
   vy: number;
   size: number;
   opacity: number;
+  shape: 'circle' | 'square' | 'triangle';
+  shimmer: boolean;
 }
 
 export default function InteractiveMagneticOrbs() {
@@ -17,14 +19,17 @@ export default function InteractiveMagneticOrbs() {
   const animationFrameRef = useRef<number>();
 
   useEffect(() => {
+    const shapes: ('circle' | 'square' | 'triangle')[] = ['circle', 'square', 'triangle'];
     const initialParticles: Particle[] = Array.from({ length: 70 }, (_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       vx: (Math.random() - 0.5) * 0.5,
       vy: (Math.random() - 0.5) * 0.5,
-      size: 8 + Math.random() * 16,
-      opacity: 0.4 + Math.random() * 0.4,
+      size: 3 + Math.random() * 5,
+      opacity: 0.3 + Math.random() * 0.5,
+      shape: shapes[Math.floor(Math.random() * shapes.length)],
+      shimmer: Math.random() > 0.6,
     }));
     setParticles(initialParticles);
 
@@ -96,25 +101,58 @@ export default function InteractiveMagneticOrbs() {
       calculatedOpacity = particle.opacity * (1 - Math.min(fadeProgress, 1));
     }
 
-    return (
-      <div
-        key={particle.id}
-        style={{
-          position: 'absolute',
-          left: particle.x - particle.size / 2,
-          top: particle.y - particle.size / 2,
-          width: particle.size,
-          height: particle.size,
-          borderRadius: '50%',
-          background: 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(10px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
-          opacity: calculatedOpacity,
-          willChange: 'transform',
-        }}
-      />
-    );
+    const baseStyle = {
+      position: 'absolute' as const,
+      left: particle.x,
+      top: particle.y,
+      width: particle.size,
+      height: particle.size,
+      opacity: calculatedOpacity,
+      willChange: 'transform',
+      animation: particle.shimmer ? 'shimmer 2s ease-in-out infinite' : 'none',
+    };
+
+    switch (particle.shape) {
+      case 'circle':
+        return (
+          <div
+            key={particle.id}
+            style={{
+              ...baseStyle,
+              borderRadius: '50%',
+              background: 'rgba(59, 130, 246, 0.8)',
+              boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)',
+            }}
+          />
+        );
+      case 'square':
+        return (
+          <div
+            key={particle.id}
+            style={{
+              ...baseStyle,
+              background: 'rgba(34, 211, 238, 0.8)',
+              boxShadow: '0 0 10px rgba(34, 211, 238, 0.5)',
+              transform: 'rotate(45deg)',
+            }}
+          />
+        );
+      case 'triangle':
+        return (
+          <div
+            key={particle.id}
+            style={{
+              ...baseStyle,
+              width: 0,
+              height: 0,
+              borderLeft: `${particle.size / 2}px solid transparent`,
+              borderRight: `${particle.size / 2}px solid transparent`,
+              borderBottom: `${particle.size}px solid rgba(147, 197, 253, 0.8)`,
+              boxShadow: '0 0 10px rgba(147, 197, 253, 0.5)',
+            }}
+          />
+        );
+    }
   };
 
   return (
