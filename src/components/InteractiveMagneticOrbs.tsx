@@ -42,28 +42,37 @@ export default function InteractiveMagneticOrbs() {
         prevParticles.map((particle) => {
           let { x, y, vx, vy } = particle;
 
+          const baseSpeed = 0.2;
+          const angle = Math.atan2(vy, vx);
+          const currentSpeed = Math.sqrt(vx * vx + vy * vy);
+
+          if (currentSpeed < baseSpeed) {
+            vx = Math.cos(angle) * baseSpeed;
+            vy = Math.sin(angle) * baseSpeed;
+          }
+
           const dx = x - mousePosition.x;
           const dy = y - mousePosition.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 150 && distance > 0) {
             const force = (150 - distance) / 150;
-            vx += (dx / distance) * force * 1.2;
-            vy += (dy / distance) * force * 1.2;
+            vx += (dx / distance) * force * 1.5;
+            vy += (dy / distance) * force * 1.5;
           }
 
-          vx *= 0.95;
-          vy *= 0.95;
+          vx *= 0.98;
+          vy *= 0.98;
 
           x += vx;
           y += vy;
 
           if (x < 0 || x > window.innerWidth) {
-            vx *= -0.5;
+            vx *= -1;
             x = Math.max(0, Math.min(window.innerWidth, x));
           }
           if (y < 0 || y > window.innerHeight) {
-            vy *= -0.5;
+            vy *= -1;
             y = Math.max(0, Math.min(window.innerHeight, y));
           }
 
