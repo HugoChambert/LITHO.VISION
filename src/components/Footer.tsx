@@ -15,12 +15,11 @@ export default function Footer() {
   return (
     <footer
       onMouseMove={handleMouseMove}
-      className="border-t border-white/5 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 relative overflow-hidden transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group"
+      className="border-t border-white/10 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 relative overflow-hidden transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group"
       style={{
-        background: 'rgba(0, 0, 0, 0.9)',
+        background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))',
         backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        marginTop: '-1px'
+        WebkitBackdropFilter: 'blur(20px)'
       }}>
       <div
         className="pointer-events-none absolute rounded-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"

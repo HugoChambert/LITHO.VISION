@@ -77,12 +77,6 @@ export const HeroParallax = ({
           backgroundSize: '180px 180px',
         }}
       />
-      <div
-        className="absolute bottom-0 left-0 right-0 h-96 pointer-events-none z-20"
-        style={{
-          background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.9) 100%)',
-        }}
-      />
       <Header />
       <motion.div
         style={{
