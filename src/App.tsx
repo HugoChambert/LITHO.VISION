@@ -10,7 +10,7 @@ import TermsPage from "@/pages/TermsPage"
 
 function App() {
   return (
-    <Router>
+    <Router basename="/LITHO.VISION">
       <div className="bg-black min-h-screen relative flex flex-col">
         <Navbar />
         <div className="flex-1">
