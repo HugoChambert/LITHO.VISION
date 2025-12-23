@@ -68,19 +68,19 @@ export default function ImageSlider({
         </div>
 
         <div
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full overflow-hidden"
           style={{
             clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
           }}
         >
-          <img
-            src={afterImage}
-            alt={afterLabel}
-            className={`absolute inset-0 w-full h-full object-cover object-center ${
-              zoomAfter ? 'scale-110' : ''
-            }`}
-            draggable={false}
-          />
+          <div className={`absolute inset-0 w-full h-full ${zoomAfter ? 'scale-110' : ''}`}>
+            <img
+              src={afterImage}
+              alt={afterLabel}
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              draggable={false}
+            />
+          </div>
         </div>
 
         <div
