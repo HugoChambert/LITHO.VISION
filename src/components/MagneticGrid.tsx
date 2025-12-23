@@ -30,7 +30,7 @@ export default function MagneticGrid() {
 
     const initNodes = () => {
       const nodes: Node[] = []
-      const spacing = 80
+      const spacing = 60
       const cols = Math.ceil(canvas.width / spacing)
       const rows = Math.ceil(canvas.height / spacing)
 
@@ -63,11 +63,11 @@ export default function MagneticGrid() {
         const dx = mouse.x - node.x
         const dy = mouse.y - node.y
         const distance = Math.sqrt(dx * dx + dy * dy)
-        const maxDistance = 200
+        const maxDistance = 250
 
         if (distance < maxDistance) {
           const force = (maxDistance - distance) / maxDistance
-          const pullStrength = 0.3
+          const pullStrength = 0.6
           node.vx += (dx / distance) * force * pullStrength
           node.vy += (dy / distance) * force * pullStrength
         }
@@ -88,15 +88,15 @@ export default function MagneticGrid() {
         const intensity = Math.min(distanceFromBase / 50, 1)
 
         ctx.beginPath()
-        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(59, 130, 246, ${0.3 + intensity * 0.7})`
+        ctx.arc(node.x, node.y, 3, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(59, 130, 246, ${0.5 + intensity * 0.5})`
         ctx.fill()
 
         if (distance < maxDistance) {
           ctx.strokeStyle = `rgba(59, 130, 246, ${
-            0.1 + (1 - distance / maxDistance) * 0.2
+            0.15 + (1 - distance / maxDistance) * 0.35
           })`
-          ctx.lineWidth = 1
+          ctx.lineWidth = 1.5
           ctx.beginPath()
           ctx.moveTo(node.x, node.y)
           ctx.lineTo(mouse.x, mouse.y)
@@ -144,7 +144,7 @@ export default function MagneticGrid() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.85 }}
     />
   )
 }

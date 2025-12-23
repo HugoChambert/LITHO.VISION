@@ -16,7 +16,6 @@ export default function ImageSlider({
   zoomAfter = false
 }: ImageSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (clientX: number) => {
@@ -29,9 +28,7 @@ export default function ImageSlider({
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isDragging) {
-      handleMove(e.clientX);
-    }
+    handleMove(e.clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -41,16 +38,11 @@ export default function ImageSlider({
   };
 
   const handleInteractionStart = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
-    setIsDragging(true);
     if ('clientX' in e) {
       handleMove(e.clientX);
     } else if (e.touches.length > 0) {
       handleMove(e.touches[0].clientX);
     }
-  };
-
-  const handleInteractionEnd = () => {
-    setIsDragging(false);
   };
 
   return (
@@ -63,11 +55,8 @@ export default function ImageSlider({
         }}
         onMouseDown={handleInteractionStart}
         onMouseMove={handleMouseMove}
-        onMouseUp={handleInteractionEnd}
-        onMouseLeave={handleInteractionEnd}
         onTouchStart={handleInteractionStart}
         onTouchMove={handleTouchMove}
-        onTouchEnd={handleInteractionEnd}
       >
         <div className="absolute inset-0 w-full h-full">
           <img

@@ -4,9 +4,7 @@ import { useState, useRef } from 'react'
 export default function Navbar() {
   const location = useLocation()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [showContactDropdown, setShowContactDropdown] = useState(false)
   const navRef = useRef<HTMLElement>(null)
-  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const handleScheduleClick = () => {
     if (typeof window !== 'undefined' && (window as any).Cal) {
@@ -25,14 +23,6 @@ export default function Navbar() {
         y: e.clientY - rect.top,
       })
     }
-  }
-
-  const handleMouseEnter = () => {
-    setShowContactDropdown(true)
-  }
-
-  const handleMouseLeave = () => {
-    setShowContactDropdown(false)
   }
 
   return (
@@ -87,74 +77,15 @@ export default function Navbar() {
           <span className="hidden sm:inline">Schedule Demo</span>
           <span className="sm:hidden">Demo</span>
         </button>
-        <div className="relative" ref={dropdownRef} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <button
-            className="text-white/90 no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer bg-transparent border-none p-0"
-          >
-            <span className="hidden sm:inline">Contact Us</span>
-            <span className="sm:hidden">Contact</span>
-          </button>
-
-          {showContactDropdown && (
-            <div className="absolute top-full right-0 pt-1 z-[2000]">
-              <div className="w-[240px] rounded-xl border border-white/10 overflow-hidden"
-                   style={{
-                     background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.9))',
-                     backdropFilter: 'blur(40px)',
-                     WebkitBackdropFilter: 'blur(40px)',
-                     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-                   }}>
-              <div className="p-4 space-y-3">
-                <div>
-                  <h4 className="text-sm font-bold text-white mb-2">Sales</h4>
-                  <button
-                    onClick={() => {
-                      if (typeof window !== 'undefined' && (window as any).Cal) {
-                        (window as any).Cal.ns['book-a-demo']('ui', {
-                          hideEventTypeDetails: false,
-                          layout: 'month_view'
-                        });
-                      }
-                      setShowContactDropdown(false)
-                    }}
-                    data-cal-link="hugo.chambert/book-a-demo"
-                    data-cal-namespace="book-a-demo"
-                    data-cal-config='{"layout":"month_view"}'
-                    className="px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-all duration-300 hover:scale-105 cursor-pointer w-full"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.1))',
-                      border: '1px solid rgba(59, 130, 246, 0.3)'
-                    }}
-                  >
-                    Schedule Demo
-                  </button>
-                </div>
-
-                <div className="border-t border-white/10 pt-3">
-                  <h4 className="text-sm font-bold text-white mb-2">Support</h4>
-                  <a
-                    href="mailto:support@lithovision.com"
-                    className="inline-block px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-all duration-300 hover:scale-105 w-full text-center"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
-                      border: '1px solid rgba(255, 255, 255, 0.2)'
-                    }}
-                  >
-                    Email Support
-                  </a>
-                </div>
-
-                <div className="border-t border-white/10 pt-3">
-                  <h4 className="text-sm font-bold text-white mb-1.5">Info</h4>
-                  <a href="mailto:info@lithovision.com" className="text-xs text-white/70 hover:text-white transition-colors block">
-                    info@lithovision.com
-                  </a>
-                </div>
-              </div>
-              </div>
-            </div>
-          )}
-        </div>
+        <Link
+          to="/contact"
+          className={`no-underline text-[10px] sm:text-xs md:text-sm lg:text-[15px] font-normal tracking-[-0.01em] whitespace-nowrap relative pb-1 leading-none transition-all duration-500 hover:text-white hover:scale-105 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[1px] after:bg-blue-500 after:transition-all after:duration-500 hover:after:w-full hover:after:shadow-lg hover:after:shadow-blue-500/50 cursor-pointer ${
+            location.pathname === '/contact' ? 'text-white after:w-full' : 'text-white/90 after:w-0'
+          }`}
+        >
+          <span className="hidden sm:inline">Contact Us</span>
+          <span className="sm:hidden">Contact</span>
+        </Link>
       </div>
     </nav>
   );
