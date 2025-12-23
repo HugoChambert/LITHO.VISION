@@ -13,7 +13,6 @@ interface Particle {
 
 export default function InteractiveMagneticOrbs() {
   const [particles, setParticles] = useState<Particle[]>([]);
-  const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
   const containerRef = useRef<HTMLDivElement>(null);
   const animationFrameRef = useRef<number>();
 
@@ -23,46 +22,18 @@ export default function InteractiveMagneticOrbs() {
       id: i,
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
       size: 3 + Math.random() * 5,
       opacity: 0.3 + Math.random() * 0.5,
       shape: shapes[Math.floor(Math.random() * shapes.length)],
     }));
     setParticles(initialParticles);
 
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
     const animate = () => {
       setParticles((prevParticles) =>
         prevParticles.map((particle) => {
           let { x, y, vx, vy } = particle;
-
-          const baseSpeed = 0.2;
-          const angle = Math.atan2(vy, vx);
-          const currentSpeed = Math.sqrt(vx * vx + vy * vy);
-
-          if (currentSpeed < baseSpeed) {
-            vx = Math.cos(angle) * baseSpeed;
-            vy = Math.sin(angle) * baseSpeed;
-          }
-
-          const dx = x - mousePosition.x;
-          const dy = y - mousePosition.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 150 && distance > 0) {
-            const force = (150 - distance) / 150;
-            vx += (dx / distance) * force * 1.5;
-            vy += (dy / distance) * force * 1.5;
-          }
-
-          vx *= 0.98;
-          vy *= 0.98;
 
           x += vx;
           y += vy;
@@ -86,12 +57,11 @@ export default function InteractiveMagneticOrbs() {
     animate();
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [mousePosition.x, mousePosition.y]);
+  }, []);
 
   const renderParticle = (particle: Particle) => {
     const baseStyle = {
@@ -154,18 +124,6 @@ export default function InteractiveMagneticOrbs() {
       style={{ overflow: 'hidden' }}
     >
       {particles.map((particle) => renderParticle(particle))}
-
-      <div
-        className="absolute rounded-full pointer-events-none transition-opacity duration-300"
-        style={{
-          width: 150,
-          height: 150,
-          left: mousePosition.x - 75,
-          top: mousePosition.y - 75,
-          border: '1px solid rgba(59, 130, 246, 0.2)',
-          opacity: mousePosition.x > 0 ? 0.5 : 0,
-        }}
-      />
     </div>
   );
 }
