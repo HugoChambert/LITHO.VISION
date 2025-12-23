@@ -39,9 +39,8 @@ export default function Hero() {
           {'LITHOVISION'.split('').map((letter, index) => (
             <motion.span
               key={index}
-              className="inline-block transition-all duration-300 hover:-translate-y-4 hover:text-blue-400 cursor-pointer"
+              className="inline-block"
               style={{
-                transitionDelay: `${index * 20}ms`,
                 textShadow: '0 0 40px rgba(59, 130, 246, 0.3)'
               }}
               initial={{ opacity: 0, y: 20 }}
