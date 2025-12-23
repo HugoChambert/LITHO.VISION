@@ -218,7 +218,7 @@ export default function HowItWorks() {
             </p>
           </div>
           <ImageSlider
-            beforeImage="/assets/img/1 copy.jpg"
+            beforeImage="/assets/img/1.jpg"
             afterImage="/assets/img/3.JPG"
             zoomAfter={true}
           />
