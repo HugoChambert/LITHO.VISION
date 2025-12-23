@@ -4,7 +4,9 @@ import { HeroParallax } from "@/components/ui/hero-parallax";
 export default function HeroParallaxDemo() {
   return <HeroParallax products={products} />;
 }
+
 export const products = [
+  // Row 1 (scrolls right to left)
   {
     title: "Testimonial",
     thumbnail: "/assets/img/t1.png",
@@ -25,6 +27,8 @@ export const products = [
     title: "Testimonial",
     thumbnail: "/assets/img/t5.png",
   },
+
+  // Row 2 (scrolls left to right)
   {
     title: "Testimonial",
     thumbnail: "/assets/img/t6.png",
@@ -45,6 +49,8 @@ export const products = [
     title: "Testimonial",
     thumbnail: "/assets/img/t10.png",
   },
+
+  // Row 3 (scrolls right to left)
   {
     title: "Testimonial",
     thumbnail: "/assets/img/t11.png",
