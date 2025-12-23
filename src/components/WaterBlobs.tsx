@@ -15,11 +15,12 @@ export default function WaterBlobs() {
   const blobsRef = useRef<Blob[]>([]);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
   const animationFrameRef = useRef<number>();
-  const [isMobile, setIsMobile] = useState(true);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  const [isMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return true;
+  });
 
   useEffect(() => {
     if (isMobile) return;

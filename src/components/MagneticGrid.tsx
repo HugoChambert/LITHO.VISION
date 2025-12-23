@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface Node {
   x: number
@@ -14,8 +14,16 @@ export default function MagneticGrid() {
   const nodesRef = useRef<Node[]>([])
   const mouseRef = useRef({ x: 0, y: 0 })
   const animationRef = useRef<number>()
+  const [isMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768
+    }
+    return true
+  })
 
   useEffect(() => {
+    if (isMobile) return
+
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -138,7 +146,11 @@ export default function MagneticGrid() {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [])
+  }, [isMobile])
+
+  if (isMobile) {
+    return null
+  }
 
   return (
     <canvas

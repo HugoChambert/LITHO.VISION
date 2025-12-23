@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function NoiseOverlay() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isMobile, setIsMobile] = useState(true);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  const [isMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return true;
+  });
 
   useEffect(() => {
     if (isMobile) return;

@@ -17,7 +17,12 @@ export default function ImageSlider({
 }: ImageSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
