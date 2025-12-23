@@ -1,14 +1,39 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Footer() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
   return (
-    <footer className="border-t border-white/10 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 relative"
-            style={{
-              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)'
-            }}>
-      <div className="max-w-7xl mx-auto">
+    <footer
+      onMouseMove={handleMouseMove}
+      className="border-t border-white/10 py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 relative overflow-hidden transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group"
+      style={{
+        background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)'
+      }}>
+      <div
+        className="pointer-events-none absolute rounded-full transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+        style={{
+          width: '300px',
+          height: '300px',
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+          transform: 'translate(-50%, -50%)',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 40%, transparent 70%)',
+          filter: 'blur(20px)',
+        }}
+      />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-8 sm:mb-12">
           <div>
             <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">LithoVision</h3>
