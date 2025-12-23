@@ -5,7 +5,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/litho.vision/',  // ← ADDED: Critical for GitHub Pages
+  base: '/LITHO.VISION/',  
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
