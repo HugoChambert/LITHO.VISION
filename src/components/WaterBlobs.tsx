@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Blob {
   x: number;
@@ -15,8 +15,15 @@ export default function WaterBlobs() {
   const blobsRef = useRef<Blob[]>([]);
   const mouseRef = useRef({ x: 0, y: 0, active: false });
   const animationFrameRef = useRef<number>();
+  const [isMobile, setIsMobile] = useState(true);
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -199,7 +206,13 @@ export default function WaterBlobs() {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return (
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-900/20 via-blue-800/10 to-cyan-900/20" />
+    );
+  }
 
   return (
     <canvas

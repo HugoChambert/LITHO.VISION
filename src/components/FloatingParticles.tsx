@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 interface Particle {
   x: number;
@@ -13,6 +14,7 @@ interface Particle {
 }
 
 export default function FloatingParticles() {
+  const isMobile = useIsMobile();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -20,6 +22,8 @@ export default function FloatingParticles() {
   const isVisibleRef = useRef(true);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -140,7 +144,11 @@ export default function FloatingParticles() {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>

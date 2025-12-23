@@ -1,7 +1,10 @@
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useEffect } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function AnimatedBackground() {
+  const isMobile = useIsMobile();
+
   const blob1X = useMotionValue(25);
   const blob1Y = useMotionValue(35);
   const blob2X = useMotionValue(75);
@@ -38,6 +41,8 @@ export default function AnimatedBackground() {
   const blob5YPercent = useTransform(blob5YSpring, (v) => `${v}%`);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const animateBlobs = () => {
       const time = Date.now() * 0.0003;
 
@@ -59,7 +64,20 @@ export default function AnimatedBackground() {
 
     const interval = setInterval(animateBlobs, 50);
     return () => clearInterval(interval);
-  }, [blob1X, blob1Y, blob2X, blob2Y, blob3X, blob3Y, blob4X, blob4Y, blob5X, blob5Y]);
+  }, [isMobile, blob1X, blob1Y, blob2X, blob2Y, blob3X, blob3Y, blob4X, blob4Y, blob5X, blob5Y]);
+
+  if (isMobile) {
+    return (
+      <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse at 30% 40%, rgba(59, 130, 246, 0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(96, 165, 250, 0.12) 0%, transparent 60%)',
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">

@@ -17,7 +17,15 @@ export default function ImageSlider({
 }: ImageSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const loadImage = (src: string): Promise<void> => {
@@ -73,9 +81,11 @@ export default function ImageSlider({
     <div className="relative group max-w-4xl mx-auto px-2 sm:px-0">
       <div
         ref={containerRef}
-        className="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-ew-resize select-none border border-white/10 transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10"
+        className={`relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden cursor-ew-resize select-none border border-white/10 ${
+          !isMobile ? 'transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10' : ''
+        }`}
         style={{
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.4)',
+          boxShadow: isMobile ? '0 10px 30px rgba(0, 0, 0, 0.4)' : '0 20px 60px rgba(0, 0, 0, 0.4)',
           backgroundColor: '#000'
         }}
         onMouseDown={handleInteractionStart}

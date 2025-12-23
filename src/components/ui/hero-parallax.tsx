@@ -7,8 +7,7 @@ import {
   useSpring,
   MotionValue,
 } from "motion/react";
-
-
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export const HeroParallax = ({
   products,
@@ -18,6 +17,7 @@ export const HeroParallax = ({
     thumbnail: string;
   }[];
 }) => {
+  const isMobile = useIsMobile();
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
@@ -27,17 +27,19 @@ export const HeroParallax = ({
     offset: ["start start", "end start"],
   });
 
-  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+  const springConfig = isMobile
+    ? { stiffness: 100, damping: 20, bounce: 0 }
+    : { stiffness: 300, damping: 30, bounce: 100 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    useTransform(scrollYProgress, [0, 1], [0, isMobile ? 500 : 1000]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [0, isMobile ? -500 : -1000]),
     springConfig
   );
-  const rotateX = useSpring(
+  const rotateX = isMobile ? 0 : useSpring(
     useTransform(scrollYProgress, [0, 0.2], [15, 0]),
     springConfig
   );
@@ -45,12 +47,12 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
     springConfig
   );
-  const rotateZ = useSpring(
+  const rotateZ = isMobile ? 0 : useSpring(
     useTransform(scrollYProgress, [0, 0.2], [20, 0]),
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    useTransform(scrollYProgress, [0, 0.2], [isMobile ? -300 : -700, isMobile ? 200 : 500]),
     springConfig
   );
 
@@ -62,23 +64,30 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[180vh] py-10 sm:py-16 md:py-20 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[180vh] py-10 sm:py-16 md:py-20 overflow-hidden antialiased relative flex flex-col self-auto"
       style={{
         background: '#000000',
+        perspective: isMobile ? 'none' : '1000px',
+        transformStyle: isMobile ? 'flat' : 'preserve-3d',
       }}
     >
-      <motion.div
-        className="absolute inset-0 opacity-50 pointer-events-none mix-blend-overlay"
-        style={{
-          y: grainTranslate,
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '180px 180px',
-        }}
-      />
+      {!isMobile && (
+        <motion.div
+          className="absolute inset-0 opacity-50 pointer-events-none mix-blend-overlay"
+          style={{
+            y: grainTranslate,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+            backgroundSize: '180px 180px',
+          }}
+        />
+      )}
       <Header />
       <motion.div
-        style={{
+        style={isMobile ? {
+          translateY,
+          opacity,
+        } : {
           rotateX,
           rotateZ,
           translateY,
