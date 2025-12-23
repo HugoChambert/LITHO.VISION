@@ -122,10 +122,10 @@ export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-10 md:py-20 px-4 w-full  left-0 top-0">
       <h1 className="text-2xl md:text-7xl font-bold text-white drop-shadow-lg">
-        Testimonials From Past Clients
+        Proven Excellence
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 text-white drop-shadow-md">
-       Driven By Results
+       Where Vision Meets Results
       </p>
     </div>
   );
