@@ -73,15 +73,22 @@ export default function FloatingParticles() {
         const distance = Math.sqrt(dx * dx + dy * dy);
         const repulsionRadius = 150;
 
-        if (distance < repulsionRadius) {
+        if (distance < repulsionRadius && distance > 0) {
           const force = (repulsionRadius - distance) / repulsionRadius;
           const angle = Math.atan2(dy, dx);
-          particle.vx -= Math.cos(angle) * force * 0.5;
-          particle.vy -= Math.sin(angle) * force * 0.5;
+          particle.vx -= Math.cos(angle) * force * 0.2;
+          particle.vy -= Math.sin(angle) * force * 0.2;
         }
 
-        particle.vx += (particle.baseVx - particle.vx) * 0.05;
-        particle.vy += (particle.baseVy - particle.vy) * 0.05;
+        particle.vx += (particle.baseVx - particle.vx) * 0.1;
+        particle.vy += (particle.baseVy - particle.vy) * 0.1;
+
+        const maxSpeed = 3;
+        const speed = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy);
+        if (speed > maxSpeed) {
+          particle.vx = (particle.vx / speed) * maxSpeed;
+          particle.vy = (particle.vy / speed) * maxSpeed;
+        }
 
         particle.x += particle.vx;
         particle.y += particle.vy;
