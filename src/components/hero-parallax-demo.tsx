@@ -5,85 +5,87 @@ export default function HeroParallaxDemo() {
   return <HeroParallax products={products} />;
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+
 export const products = [
   // Row 1 (scrolls right to left) - 5 images
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t1.png",
+    thumbnail: `${baseUrl}assets/img/t1.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t2.png",
+    thumbnail: `${baseUrl}assets/img/t2.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t3.png",
+    thumbnail: `${baseUrl}assets/img/t3.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t4.png",
+    thumbnail: `${baseUrl}assets/img/t4.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t5.png",
+    thumbnail: `${baseUrl}assets/img/t5.png`,
   },
 
   // Row 2 (scrolls left to right) - 5 images
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t6.png",
+    thumbnail: `${baseUrl}assets/img/t6.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t7.png",
+    thumbnail: `${baseUrl}assets/img/t7.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t8.png",
+    thumbnail: `${baseUrl}assets/img/t8.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t9.png",
+    thumbnail: `${baseUrl}assets/img/t9.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t10.png",
+    thumbnail: `${baseUrl}assets/img/t10.png`,
   },
 
   // Row 3 (scrolls right to left) - 5 images
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t11.png",
+    thumbnail: `${baseUrl}assets/img/t11.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t12.png",
+    thumbnail: `${baseUrl}assets/img/t12.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t13.png",
+    thumbnail: `${baseUrl}assets/img/t13.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t14.png",
+    thumbnail: `${baseUrl}assets/img/t14.png`,
   },
   {
     title: "Testimonial",
     link: "#",
-    thumbnail: "/assets/img/t15.png",
+    thumbnail: `${baseUrl}assets/img/t15.png`,
   },
 ];
