@@ -29,7 +29,7 @@ export default function Navbar() {
     <nav
       ref={navRef}
       onMouseMove={handleMouseMove}
-      className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-between gap-4 md:gap-12 lg:gap-20 px-4 md:px-8 lg:px-12 py-3 md:py-4 rounded-full border border-white/10 transition-all duration-500 w-[95%] md:w-auto md:min-w-[650px] lg:min-w-[700px] max-w-[1200px] hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group overflow-hidden"
+      className="fixed top-3 md:top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-between gap-4 md:gap-12 lg:gap-20 px-4 md:px-8 lg:px-12 py-3 md:py-4 rounded-full border border-white/10 transition-all duration-500 w-[95%] md:w-auto md:min-w-[650px] lg:min-w-[700px] max-w-[1200px] hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 group overflow-hidden cursor-pointer"
          style={{
            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02))',
            backdropFilter: 'blur(40px) saturate(180%)',
