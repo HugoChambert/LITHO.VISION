@@ -5,7 +5,8 @@ export default function HeroParallaxDemo() {
   return <HeroParallax products={products} />;
 }
 
-const baseUrl = import.meta.env.BASE_URL;
+// Base path for GitHub Pages deployment
+const baseUrl = '/LITHO.VISION/';
 
 export const products = [
   // Row 1 (scrolls right to left) - 5 images
