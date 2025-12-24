@@ -115,6 +115,8 @@ export default function ImageSlider({
             draggable={false}
             loading="eager"
             decoding="async"
+            width="1920"
+            height="1080"
           />
         </div>
 
@@ -132,6 +134,8 @@ export default function ImageSlider({
               draggable={false}
               loading="eager"
               decoding="async"
+              width="1920"
+              height="1080"
             />
           </div>
         </div>
