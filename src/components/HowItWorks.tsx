@@ -218,23 +218,23 @@ export default function HowItWorks() {
             </p>
           </div>
           <ImageSlider
-            beforeImage="public/assets/img/1.jpg"
-            afterImage="public/assets/img/3.JPG"
+            beforeImage="/LITHO.VISION/assets/img/1.jpg"
+            afterImage="/LITHO.VISION/assets/img/3.JPG"
             zoomAfter={true}
           />
         </div>
 
         <div className="mb-12 sm:mb-16 md:mb-20 lg:mb-24">
           <ImageSlider
-            beforeImage="public/assets/img/7.JPG"
-            afterImage="public/assets/img/8.PNG"
+            beforeImage="/LITHO.VISION/assets/img/7.JPG"
+            afterImage="/LITHO.VISION/assets/img/8.PNG"
           />
         </div>
 
         <div className="mb-12 sm:mb-16 md:mb-20 lg:mb-24">
           <ImageSlider
-            beforeImage="public/assets/img/9.jpg"
-            afterImage="public/assets/img/10.PNG"
+            beforeImage="/LITHO.VISION/assets/img/9.jpg"
+            afterImage="/LITHO.VISION/assets/img/10.PNG"
           />
         </div>
       </div>
