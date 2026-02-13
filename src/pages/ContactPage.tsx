@@ -190,7 +190,7 @@ export default function ContactPage() {
               <div>
                 <h4 className="text-white font-semibold mb-2">Proven Results</h4>
                 <p className="text-sm">
-                  Clients report 40% reduction in defect rates and 60% faster quality control processing
+                  Clients experience up to a 40% increase in sales, driven by our software's ability to solidify slab selection decisions.
                 </p>
               </div>
               <div>
