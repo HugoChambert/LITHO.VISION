@@ -184,7 +184,7 @@ export default function ContactPage() {
               <div>
                 <h4 className="text-white font-semibold mb-2">Industry Expertise</h4>
                 <p className="text-sm">
-                  Our team has decades of combined experience in semiconductor manufacturing and AI technology
+                  Our engineering team specializes in AI technology and software development, delivering proven results through years of hands-on experience.
                 </p>
               </div>
               <div>
