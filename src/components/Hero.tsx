@@ -80,24 +80,6 @@ export default function Hero() {
         </motion.p>
       </div>
 
-      {!isMobile && (
-        <motion.div
-          className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 z-10"
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <div className="text-white text-xs md:text-sm tracking-widest opacity-70">
-            SCROLL TO EXPLORE
-          </div>
-        </motion.div>
-      )}
-
       <div
         className="absolute bottom-0 left-0 right-0 h-96 pointer-events-none z-5"
         style={{
