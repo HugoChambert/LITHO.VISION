@@ -5,7 +5,7 @@ import MagneticGrid from "@/components/MagneticGrid"
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative">
       <AnimatedBackground />
       <NoiseOverlay />
       <MagneticGrid />
