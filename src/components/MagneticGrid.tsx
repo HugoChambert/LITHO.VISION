@@ -99,36 +99,6 @@ export default function MagneticGrid() {
         ctx.arc(node.x, node.y, 3, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(59, 130, 246, ${0.5 + intensity * 0.5})`
         ctx.fill()
-
-        if (distance < maxDistance) {
-          ctx.strokeStyle = `rgba(59, 130, 246, ${
-            0.15 + (1 - distance / maxDistance) * 0.35
-          })`
-          ctx.lineWidth = 1.5
-          ctx.beginPath()
-          ctx.moveTo(node.x, node.y)
-          ctx.lineTo(mouse.x, mouse.y)
-          ctx.stroke()
-        }
-      })
-
-      nodes.forEach((node, i) => {
-        nodes.slice(i + 1).forEach((otherNode) => {
-          const dx = otherNode.x - node.x
-          const dy = otherNode.y - node.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < 100) {
-            ctx.strokeStyle = `rgba(59, 130, 246, ${
-              0.05 * (1 - distance / 100)
-            })`
-            ctx.lineWidth = 0.5
-            ctx.beginPath()
-            ctx.moveTo(node.x, node.y)
-            ctx.lineTo(otherNode.x, otherNode.y)
-            ctx.stroke()
-          }
-        })
       })
 
       animationRef.current = requestAnimationFrame(animate)

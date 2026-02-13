@@ -14,7 +14,7 @@ export default function HomePage() {
   })
 
   return (
-    <>
+    <div className="relative min-h-screen">
       <AnimatedBackground />
       <NoiseOverlay />
       <MagneticGrid />
@@ -22,6 +22,6 @@ export default function HomePage() {
         <Hero />
         {!isMobile && <HeroParallaxDemo />}
       </div>
-    </>
+    </div>
   )
 }
