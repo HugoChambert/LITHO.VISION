@@ -5,7 +5,7 @@ export default function Hero() {
   const isMobile = useIsMobile();
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen">
       {!isMobile && (
         <>
           <svg className="absolute inset-0 w-full h-full opacity-0">
@@ -33,7 +33,7 @@ export default function Hero() {
         </>
       )}
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-auto">
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none">
         <motion.div
           className="flex text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white select-none mb-8"
           style={{
